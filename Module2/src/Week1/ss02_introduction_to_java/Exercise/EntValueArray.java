@@ -1,44 +1,38 @@
 package Week1.ss02_introduction_to_java.Exercise;
 
 import java.util.Scanner;
+
 public class EntValueArray {
-//    static int[] numberUpdate;
+    //    static int[] numberUpdate;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập vào độ dài của mảng");// độ dài mảng bandđàu
         int longArr = sc.nextInt();
         int[] numbers = new int[longArr];
 
-        for (int i = 0; i <numbers.length ; i++) {
+        for (int i = 0; i < numbers.length; i++) {
             System.out.println("Nhập phần tử vào manảng tại vị trí " + i);// Thêm vào mảng;
             numbers[i] = sc.nextInt();
         }
         System.out.println("Nhập vào số cần chèn cần thêm trong mảng");
-<<<<<<< HEAD
         int inputIndex = sc.nextInt();
-=======
-        int X = sc.nextInt();
->>>>>>> origin/main
-
+        int indexRemove = sc.nextInt();
         System.out.println("Nhập vào index cần chèn");
         int index = sc.nextInt();
 
-        int newArr[] = new int[longArr+1];// tạo mảng mới độ dài +1
+        int newArr[] = new int[longArr + 1];// tạo mảng mới độ dài +1
 
-        for (int i = 0; i <numbers.length+1 ; i++) { //Duyệt mảng với do dài +1
-            if (i<index){
+        for (int i = 0; i < numbers.length + 1; i++) { //Duyệt mảng với do dài +1
+            if (i < index) {
                 newArr[i] = numbers[i]; // bé hơn v trí cần chnè thì gán vào
-            }else if (i == index){ // bằng thì gán số cần chen;
-<<<<<<< HEAD
+            } else if (i == index) { // bằng thì gán số cần chen;
                 newArr[i] = inputIndex;
-=======
-                newArr[i] = X;
->>>>>>> origin/main
-            }else {
-                newArr[i] = numbers[i-1]; //gán number trừ 1 vì đã gán index vào vị trí i trước đó;
+                newArr[i] = indexRemove;
+            } else {
+                newArr[i] = numbers[i - 1]; //gán number trừ 1 vì đã gán index vào vị trí i trước đó;
             }
         }
-        for (int value: newArr) {  // Duyệt mảng in ra .
+        for (int value : newArr) {  // Duyệt mảng in ra .
             System.out.println(value);
         }
     }
