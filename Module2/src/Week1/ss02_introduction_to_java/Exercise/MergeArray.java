@@ -1,6 +1,6 @@
 package Week1.ss02_introduction_to_java.Exercise;
 import java.util.Scanner;
-public class Mergearray {
+public class MergeArray {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập độ dài của mảng 1:");
@@ -19,16 +19,16 @@ public class Mergearray {
             System.out.println("Nhập giá trị vào mảng 2 trại vị trí "+i);
             numberArrTwo[i] = sc.nextInt();
         }
-        int length = numberArrOne.length;
-        int lengthNum2 = numberArrTwo.length;
-        int numberArrThree[] = new int[length + lengthNum2];
+        int lengthNumArrOne = numberArrOne.length;
+        int lengthNumArrTwo = numberArrTwo.length;
+        int numberArrThree[] = new int[lengthNumArrOne + lengthNumArrTwo];
 
-        for (int i = 0; i <length ; i++) {
+        for (int i = 0; i <lengthNumArrOne ; i++) {
             numberArrThree[i] = numberArrOne[i];
         }
 
-        for (int i = 0; i <lengthNum2 ; i++) {
-            numberArrThree[i + length] = numberArrTwo[i];
+        for (int i = 0; i <lengthNumArrTwo ; i++) {
+            numberArrThree[i + lengthNumArrOne] = numberArrTwo[i];
         }
 
         for (int value:numberArrThree) {
