@@ -5,14 +5,11 @@ import java.util.Scanner;
 public class LargestElement2D {
     public static double maxNumber2D(double arr[][]) {
         double max = arr[0][0];
-        int lineArr = 0;
-        int columArr = 0;
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
                 if (max < arr[i][j]) {
                     max = arr[i][j];
-                    lineArr = j + 1;
-                    columArr = j + 1;
+
                 }
             }
 
@@ -28,12 +25,12 @@ public class LargestElement2D {
             for (int j = 0; j < arr[i].length; j++) {
                 if (max < arr[i][j]) {
                     max = arr[i][j];
-                    lineArr = j + 1;
-                    columArr = j + 1;
+                    lineArr = i;
+                    columArr = j;
                 }
             }
         }
-        return "\ttọa độ dòng :" + lineArr + "\tcột :" + columArr;
+        return "\ttọa độ dòng :" + (lineArr + 1) + "\tcột :" + (columArr + 1);
     }
 
     public static void main(String[] args) {
