@@ -37,4 +37,4 @@ public class MergeArray {
             System.out.println(value);
         }
     }
-}//a
+}
