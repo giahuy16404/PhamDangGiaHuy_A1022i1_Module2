@@ -2,7 +2,7 @@ package Week1.ss03_method.exercise;
 
 import java.util.Scanner;
 
-public class minArray {
+public class MinArray {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập vào độ dai của mảng");
