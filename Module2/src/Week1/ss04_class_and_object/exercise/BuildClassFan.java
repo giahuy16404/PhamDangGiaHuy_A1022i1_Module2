@@ -1,7 +1,5 @@
 package Week1.ss04_class_and_object.exercise;
 
-import java.util.Scanner;
-
 public class BuildClassFan {
     static final int slow = 1;
     static final int medium = 2;
@@ -43,7 +41,7 @@ public class BuildClassFan {
         return speed;
     }
 
-    public boolean getOn() {
+    public boolean isOn() {
         return on;
     }
 
@@ -56,7 +54,7 @@ public class BuildClassFan {
     }
 
     public String toString() {
-        if (this.getOn()) {
+        if (this.isOn()) {
             return "Speed:" + this.getSpeed() + " Color:" + this.getColor() + " Radius:" + this.getRadius() + " fan is on";
         } else {
             return "Color:" + this.getColor() + " Radius:" + this.getRadius() + " fan is off";
