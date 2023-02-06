@@ -1,4 +1,4 @@
-package Week1.ss05_static_method_static_property.exercise;
+package Week1.ss05_static_method_static_property.exercise.Student;
 
 public class Student {
     private String name = "john";
@@ -6,7 +6,7 @@ public class Student {
 
     public Student() {
     }
-    
+
     public void setClasses(String classes) {
         this.classes = classes;
     }
@@ -19,12 +19,5 @@ public class Student {
         return name + " " + classes;
     }
 
-    public static void main(String[] args) {
-        Student student = new Student();
 
-        student.setName("GiaHuy");
-        student.setClasses("A1022I1");
-
-        System.out.println(student);
-    }
 }

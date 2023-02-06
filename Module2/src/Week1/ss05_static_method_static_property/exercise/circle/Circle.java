@@ -1,4 +1,4 @@
-package Week1.ss05_static_method_static_property.exercise;
+package Week1.ss05_static_method_static_property.exercise.circle;
 
 public class Circle {
     private double radius = 1.0;
@@ -19,8 +19,5 @@ public class Circle {
        return radius;
     }
 
-    public static void main(String[] args) {
-        Circle testCircle = new Circle();
-        System.out.println(testCircle.getRadius());
-    }
+
 }
