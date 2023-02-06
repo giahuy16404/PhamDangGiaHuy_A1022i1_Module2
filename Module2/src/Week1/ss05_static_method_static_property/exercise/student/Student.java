@@ -1,4 +1,4 @@
-package Week1.ss05_static_method_static_property.exercise.Student;
+package Week1.ss05_static_method_static_property.exercise.student;
 
 public class Student {
     private String name = "john";
