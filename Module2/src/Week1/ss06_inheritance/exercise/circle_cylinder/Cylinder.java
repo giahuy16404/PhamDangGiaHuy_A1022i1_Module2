@@ -23,6 +23,6 @@ public class Cylinder extends Circle {
 
     @Override
     public String toString() {
-        return "Cylinder{" + "height=" + height + '}';
+        return "Cylinder{" + "color='" + getColor() + '\'' + ", radius=" + getRadius() + ", height=" + height + '}';
     }
 }
