@@ -24,11 +24,13 @@ public class Circle {
     public void setRadius(int radius) {
         this.radius = radius;
     }
-    public double acreageCircle (){
+
+    public double acreageCircle() {
         double acreageCircle = Math.sqrt(radius) * Math.PI;
         return acreageCircle;
     }
-    public double perimeterCircle (){
+
+    public double perimeterCircle() {
         double perimeterCircle = radius * 2 * Math.PI;
         return perimeterCircle;
     }
