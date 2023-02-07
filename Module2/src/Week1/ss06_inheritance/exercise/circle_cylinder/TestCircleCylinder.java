@@ -2,7 +2,7 @@ package Week1.ss06_inheritance.exercise.circle_cylinder;
 
 public class TestCircleCylinder {
     public static void main(String[] args) {
-        Circle circle = new Cylinder("Blue", 12, 5);
+        Circle circle = new Circle("Blue", 12);
         System.out.println(circle.acreageCircle());
         System.out.println(circle);
 
