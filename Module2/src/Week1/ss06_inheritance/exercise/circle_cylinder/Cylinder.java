@@ -8,6 +8,14 @@ public class Cylinder extends Circle {
         this.height = height;
     }
 
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
     public double volumeCylinder() {
         double volumeCylinder = getRadius() * 2 * Math.PI;
         return volumeCylinder;
@@ -15,6 +23,6 @@ public class Cylinder extends Circle {
 
     @Override
     public String toString() {
-        return "Cylinder{" + "color='" + getColor() + '\'' + ", radius=" + getRadius() + ", height=" + this.height + '}';
+        return "Cylinder{" + "height=" + height + '}';
     }
 }
