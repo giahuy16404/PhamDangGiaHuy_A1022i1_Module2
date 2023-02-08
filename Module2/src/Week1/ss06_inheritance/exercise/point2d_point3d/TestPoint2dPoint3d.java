@@ -10,6 +10,7 @@ public class TestPoint2dPoint3d {
 
         Point3d point3d = new Point3d(5, 6, 7);
         System.out.println(Arrays.toString(point3d.getXYZ()));
+        point3d.setXYZ(3,2,1);
         System.out.println(point3d);
 
     }
