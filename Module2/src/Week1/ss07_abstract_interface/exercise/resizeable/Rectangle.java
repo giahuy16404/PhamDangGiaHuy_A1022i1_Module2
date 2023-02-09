@@ -2,12 +2,12 @@ package Week1.ss07_abstract_interface.exercise.resizeable;
 
 import java.util.Scanner;
 
-public class Rectangle implements Resizeable {
+public class Rectangle extends Shape {
     private double width;
     private double length;
 
-
-    public Rectangle(double width, double length) {
+    public Rectangle(String color, double width, double length) {
+        super(color);
         this.width = width;
         this.length = length;
     }

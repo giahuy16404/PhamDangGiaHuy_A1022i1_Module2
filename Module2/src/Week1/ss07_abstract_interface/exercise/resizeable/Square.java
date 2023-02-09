@@ -1,7 +1,10 @@
 package Week1.ss07_abstract_interface.exercise.resizeable;
 
-public class Square implements Resizeable {
+public class Square extends Shape implements Resizeable {
     private double edge;
+
+    public Square() {
+    }
 
     @Override
     public void resize(double percent) {
@@ -14,11 +17,9 @@ public class Square implements Resizeable {
                 + percent + "%: " + resize + "\n");
     }
 
-    public Square(double edge) {
+    public Square(String color, double edge) {
+        super(color);
         this.edge = edge;
-    }
-
-    public Square() {
     }
 
     public double getEdge() {

@@ -1,13 +1,14 @@
 package Week1.ss07_abstract_interface.exercise.resizeable;
 
-public class Circle implements Resizeable {
+public class Circle extends Shape implements Resizeable {
 
     private double radius;
 
     public Circle() {
     }
 
-    public Circle(double radius) {
+    public Circle(String color, double radius) {
+        super(color);
         this.radius = radius;
     }
 
