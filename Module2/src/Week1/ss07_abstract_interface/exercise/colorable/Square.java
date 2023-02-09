@@ -1,6 +1,6 @@
 package Week1.ss07_abstract_interface.exercise.colorable;
 
-public class Square  implements Colorable{
+public class Square implements Colorable {
     private double edge;
     private String color;
 
@@ -8,7 +8,9 @@ public class Square  implements Colorable{
         this.edge = edge;
         this.color = color;
     }
-    public Square(){}
+
+    public Square() {
+    }
 
     @Override
     public void howToColor() {
@@ -30,6 +32,7 @@ public class Square  implements Colorable{
     public void setColor(String color) {
         this.color = color;
     }
+
     public double acreageSquare() {
         double arceageSquare = edge * edge;
         return arceageSquare;

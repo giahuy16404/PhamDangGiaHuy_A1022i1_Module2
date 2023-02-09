@@ -1,4 +1,4 @@
-package Week1.ss07_abstract.practice;
+package Week1.ss07_abstract_interface.practice;
 
 public class Animal {
 
