@@ -42,12 +42,10 @@ public class Rectangle extends Shape {
     }
 
     public double acreageRectangle() {
-        double acreageRectangle = width * length;
-        return acreageRectangle;
+        return width * length;
     }
 
     public double perimeterRectangle() {
-        double perimeterRectangle = 2 * (width + length);
-        return perimeterRectangle;
+        return 2 * (width + length);
     }
 }

@@ -31,8 +31,7 @@ public class Square extends Shape implements Resizeable {
     }
 
     public double acreageSquare() {
-        double arceageSquare = edge * edge;
-        return arceageSquare;
+        return edge * edge;
     }
 
     public double perimeterSquare() {

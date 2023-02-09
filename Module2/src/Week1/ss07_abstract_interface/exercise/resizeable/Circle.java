@@ -31,12 +31,10 @@ public class Circle extends Shape implements Resizeable {
     }
 
     public double acreageCircle() {
-        double acreageCircle = Math.sqrt(radius) * Math.PI;
-        return acreageCircle;
+        return Math.sqrt(radius) * Math.PI;
     }
 
     public double perimeterCircle() {
-        double perimeterCircle = radius * 2 * Math.PI;
-        return perimeterCircle;
+        return radius * 2 * Math.PI;
     }
 }

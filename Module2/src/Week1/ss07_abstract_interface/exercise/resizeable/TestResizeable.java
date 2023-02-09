@@ -14,8 +14,8 @@ public class TestResizeable {
         shape[1] = new Rectangle("Red", 3, 4);
         shape[2] = new Square("Green", 5);
 
-        for (int i = 0; i < shape.length; i++) {
-            shape[i].resize(percent);
+        for (Shape value : shape) {
+            value.resize(percent);
         }
     }
 }

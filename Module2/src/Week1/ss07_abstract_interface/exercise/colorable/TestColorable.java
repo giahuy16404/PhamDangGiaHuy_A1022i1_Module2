@@ -6,9 +6,9 @@ public class TestColorable {
     public static void main(String[] args) {
         Square[] square = new Square[1];
         square[0] = new Square(2, "String");
-        for (int i = 0; i < square.length; i++) {
-            System.out.println(square[i].acreageSquare());
-            square[i].howToColor();
+        for (Square value : square) {
+            System.out.println(value.acreageSquare());
+            value.howToColor();
         }
     }
 }

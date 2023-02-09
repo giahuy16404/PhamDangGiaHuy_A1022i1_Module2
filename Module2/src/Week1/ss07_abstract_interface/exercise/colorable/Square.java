@@ -34,8 +34,7 @@ public class Square implements Colorable {
     }
 
     public double acreageSquare() {
-        double arceageSquare = edge * edge;
-        return arceageSquare;
+        return edge * edge;
     }
 
     public double perimeterSquare() {
