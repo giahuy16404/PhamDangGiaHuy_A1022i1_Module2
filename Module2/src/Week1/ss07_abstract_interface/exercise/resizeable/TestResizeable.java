@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class TestResizeable {
     public static void main(String[] args) {
-        
-        double percent = Math.random();
+
+        double percent = Math.random()*100;
         Shape[] shape = new Shape[3];
         shape[0] = new Circle("Blue", 2);
         shape[1] = new Rectangle("Red", 3, 4);

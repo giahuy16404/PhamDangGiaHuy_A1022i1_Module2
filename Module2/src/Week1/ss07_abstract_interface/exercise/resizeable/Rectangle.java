@@ -2,7 +2,7 @@ package Week1.ss07_abstract_interface.exercise.resizeable;
 
 import java.util.Scanner;
 
-public class Rectangle extends Shape implements Resizeable{
+public class Rectangle extends Shape implements Resizeable {
     private double width;
     private double length;
 
@@ -17,17 +17,13 @@ public class Rectangle extends Shape implements Resizeable{
 
     @Override
     public void resize(double percent) {
-        double increaseWidth = (width * percent) / 100;
-        double increaseLength = (length * percent) / 100;
 
-        System.out.println("Diện tích hình chữ nhật trước khi tăng "
-                + percent + "%: " + acreageRectangle());
+        System.out.println("Diện tích hình chữ nhật trước khi tăng " + percent + "%: " + acreageRectangle());
 
-        setWidth(increaseWidth + width);
-        setLength(increaseLength + length);
+        setWidth(percent + width);
+        setLength(percent + length);
 
-        System.out.println("Diện tích hình chữ nhật sau khi tăng "
-                + percent + "%: " + acreageRectangle() + "\n");
+        System.out.println("Diện tích hình chữ nhật sau khi tăng " + percent + "%: " + acreageRectangle() + "\n");
     }
 
     public double getWidth() {

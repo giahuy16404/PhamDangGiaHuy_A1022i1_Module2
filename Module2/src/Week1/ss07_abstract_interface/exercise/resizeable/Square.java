@@ -8,7 +8,7 @@ public class Square extends Shape implements Resizeable {
 
     @Override
     public void resize(double percent) {
-        double percentIncrease = (edge * percent) / 100;
+        double percentIncrease = edge + percent;
         double resize = acreageSquare() + percentIncrease;
         System.out.println("Diện tích hinh vuông trước khi tăng "
                 + percent + "%: "
