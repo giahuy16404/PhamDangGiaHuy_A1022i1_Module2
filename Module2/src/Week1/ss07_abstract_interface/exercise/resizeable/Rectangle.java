@@ -17,12 +17,14 @@ public class Rectangle extends Shape {
 
     @Override
     public void resize(double percent) {
-        double percentIncrease = (acreageRectangle() * percent) / 100;
-        double resize = acreageRectangle() + percentIncrease;
+        double increaseWidth = (width * percent) / 100;
+        double increaseLength = (length * percent) / 100;
+
         System.out.println("Diện tích hình chữ nhật trước khi tăng "
-                + percent + "%: " + acreageRectangle()
-                + "\n" + "Diện tích hình chữ nhật sau khi tăng "
-                + percent + "%: " + resize + "\n");
+                + percent + "%: " + acreageRectangle());
+        setWidth(increaseWidth+width);
+        setLength(increaseLength+length);
+        System.out.println("Diện tích sau khi tăng là " + acreageRectangle());
     }
 
     public double getWidth() {
