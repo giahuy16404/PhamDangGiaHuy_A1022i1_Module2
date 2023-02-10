@@ -41,4 +41,3 @@ public class Square implements Colorable {
         return edge * 4;
     }
 }
-

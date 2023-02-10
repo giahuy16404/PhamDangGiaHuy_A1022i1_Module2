@@ -16,9 +16,7 @@ public class Circle extends Shape implements Resizeable {
     public void resize(double percent) {
 
         System.out.println("Diện tích hình tròn trước khi tăng khi tăng thuộc tính lên:" + percent + "%: " + acreageCircle());
-
-        double percentIncreaseCircle = (radius * percent) / 100;
-        double percentRadius = radius + percentIncreaseCircle;
+        double percentRadius = radius +  (radius * percent) / 100;
         setRadius(percentRadius);
         System.out.println("Diện tích hình tròn sau khi tăng khi tăng thuộc tính lên:" + percent + "%: " + acreageCircle() + "\n");
     }

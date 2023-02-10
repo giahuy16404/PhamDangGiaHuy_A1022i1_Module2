@@ -11,8 +11,7 @@ public class Square extends Shape implements Resizeable {
         System.out.println("Diện tích hình vuông trước khi tăng khi tăng thuộc tính lên:"
                 + percent + "%: " + acreageSquare());
 
-        double percentIncreaseCircle = (edge * percent) / 100;
-        double percentRadius = edge + percentIncreaseCircle;
+        double percentRadius = edge + (edge * percent) / 100;
         setEdge(percentRadius);
         System.out.println("Diện tích hình vuông sau khi tăng khi tăng thuộc tính lên:"
                 + percent + "%: " + acreageSquare() + "\n");
@@ -38,4 +37,5 @@ public class Square extends Shape implements Resizeable {
     public double perimeterSquare() {
         return edge * 4;
     }
+
 }

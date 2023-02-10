@@ -20,10 +20,8 @@ public class Rectangle extends Shape implements Resizeable {
         System.out.println("Diện tích hình chữ nhật trước khi tăng thuộc tính lên: "
                 + percent + "%: " + acreageRectangle());
 
-        double percentIncreaseWidth = (width * percent) / 100;
-        double percentWidth = width + percentIncreaseWidth;
-        double percentIncreaseLength = (length * percent) / 100;
-        double percentLength = length + percentIncreaseLength;
+        double percentWidth = width + (width * percent) / 100;
+        double percentLength = length + (length * percent) / 100;
         setWidth(percentWidth);
         setLength(percentLength);
         System.out.println("Diện tích hình chữ nhật sau khi tăng khi tăng thuộc tính lên:"
@@ -53,4 +51,5 @@ public class Rectangle extends Shape implements Resizeable {
     public double perimeterRectangle() {
         return 2 * (width + length);
     }
+
 }
