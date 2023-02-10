@@ -7,7 +7,7 @@ public class TestColorable {
         Square[] square = new Square[1];
         square[0] = new Square(2, "String");
         for (Square value : square) {
-            System.out.println(value.acreageSquare());
+            value.acreage();
             value.howToColor();
         }
     }

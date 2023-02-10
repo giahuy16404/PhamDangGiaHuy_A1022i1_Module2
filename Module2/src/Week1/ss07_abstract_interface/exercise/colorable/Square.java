@@ -33,8 +33,8 @@ public class Square implements Colorable {
         this.color = color;
     }
 
-    public double acreageSquare() {
-        return edge * edge;
+    public void acreage() {
+        System.out.println(edge*edge);
     }
 
     public double perimeterSquare() {
