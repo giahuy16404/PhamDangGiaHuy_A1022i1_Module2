@@ -2,7 +2,7 @@ package Week1.ss07_abstract_interface.exercise.resizeable;
 
 import java.util.Scanner;
 
-public class Rectangle extends Shape {
+public class Rectangle extends Shape implements Resizeable{
     private double width;
     private double length;
 
