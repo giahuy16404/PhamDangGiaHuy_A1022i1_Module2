@@ -22,9 +22,12 @@ public class Rectangle extends Shape {
 
         System.out.println("Diện tích hình chữ nhật trước khi tăng "
                 + percent + "%: " + acreageRectangle());
-        setWidth(increaseWidth+width);
-        setLength(increaseLength+length);
-        System.out.println("Diện tích sau khi tăng là " + acreageRectangle());
+
+        setWidth(increaseWidth + width);
+        setLength(increaseLength + length);
+
+        System.out.println("Diện tích hình chữ nhật sau khi tăng "
+                + percent + "%: " + acreageRectangle() + "\n");
     }
 
     public double getWidth() {
