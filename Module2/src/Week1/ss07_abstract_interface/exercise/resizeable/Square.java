@@ -8,13 +8,14 @@ public class Square extends Shape implements Resizeable {
 
     @Override
     public void resize(double percent) {
-        double percentIncrease = edge + percent;
-        double resize = acreageSquare() + percentIncrease;
-        System.out.println("Diện tích hinh vuông trước khi tăng "
-                + percent + "%: "
-                + acreageSquare() + "\n"
-                + "Diện tích hinh vuông sau khi tăng "
-                + percent + "%: " + resize + "\n");
+        System.out.println("Diện tích hình vuông trước khi tăng khi tăng thuộc tính lên:"
+                + percent + "%: " + acreageSquare());
+
+        double percentIncreaseCircle = (edge * percent) / 100;
+        double percentRadius = edge + percentIncreaseCircle;
+        setEdge(percentRadius);
+        System.out.println("Diện tích hình vuông sau khi tăng khi tăng thuộc tính lên:"
+                + percent + "%: " + acreageSquare() + "\n");
     }
 
     public Square(String color, double edge) {
