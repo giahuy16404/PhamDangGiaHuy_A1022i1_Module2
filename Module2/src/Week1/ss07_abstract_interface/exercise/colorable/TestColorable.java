@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 public class TestColorable {
     public static void main(String[] args) {
-        Square[] square = new Square[1];
-        square[0] = new Square(2, "String");
-        for (Square value : square) {
+        Shape[] shape = new Square[2];
+        shape[0] = new Square("blue",2);
+        for (Shape value : shape) {
             value.acreage();
             value.howToColor();
         }
