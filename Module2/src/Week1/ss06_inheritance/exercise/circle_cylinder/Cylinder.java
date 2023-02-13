@@ -16,7 +16,7 @@ public class Cylinder extends Circle {
         this.height = height;
     }
 
-    public double volumeCylinder() {
+    public static double volumeCylinder() {
         double volumeCylinder = getRadius() * 2 * Math.PI;
         return volumeCylinder;
     }

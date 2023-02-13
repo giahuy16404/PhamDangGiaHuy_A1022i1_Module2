@@ -23,11 +23,16 @@ public class Square extends Shape implements Colorable {
         this.edge = edge;
     }
 
-    public void acreage() {
-        System.out.println(edge*edge);
+    public double acreage() {
+        return edge * edge;
     }
 
     public double perimeterSquare() {
         return edge * 4;
+    }
+
+    @Override
+    public String toString() {
+        return "Area :" + acreage();
     }
 }

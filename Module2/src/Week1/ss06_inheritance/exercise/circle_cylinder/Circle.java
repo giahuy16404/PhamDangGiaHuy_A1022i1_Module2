@@ -2,7 +2,7 @@ package Week1.ss06_inheritance.exercise.circle_cylinder;
 
 public class Circle {
     private String color;
-    private int radius;
+    private static int radius;
 
     public Circle(String color, int radius) {
         this.color = color;
@@ -17,12 +17,8 @@ public class Circle {
         this.color = color;
     }
 
-    public int getRadius() {
+    public static int getRadius() {
         return radius;
-    }
-
-    public void setRadius(int radius) {
-        this.radius = radius;
     }
 
     public double acreageCircle() {
