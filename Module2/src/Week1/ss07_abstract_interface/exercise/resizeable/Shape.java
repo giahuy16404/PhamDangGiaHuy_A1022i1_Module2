@@ -6,10 +6,9 @@ public abstract class Shape implements Resizeable {
     public Shape(String color) {
         this.color = color;
     }
-    
+
     public Shape() {
     }
-
     public String getColor() {
         return color;
     }
@@ -17,5 +16,4 @@ public abstract class Shape implements Resizeable {
     public void setColor(String color) {
         this.color = color;
     }
-
 }
