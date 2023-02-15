@@ -1,6 +1,6 @@
 package Week1.ss07_abstract_interface.exercise.colorable;
 
-public class Square extends Shape implements Colorable {
+public  class  Square extends Shape implements Colorable {
     private double edge;
 
     public Square(String color, double edge) {
