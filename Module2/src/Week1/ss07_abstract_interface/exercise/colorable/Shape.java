@@ -1,6 +1,6 @@
 package Week1.ss07_abstract_interface.exercise.colorable;
 
-public class Shape {
+public abstract class Shape implements  Colorable{
     private String color;
 
     public Shape() {
