@@ -2,7 +2,7 @@ package ss08_mvc.repository;
 
 import ss08_mvc.model.Student;
 
-public class StudentRepositoryImpl implements StudentRepository {
+public class StudentRepositoryImpl implements ss08_mvc.repository.StudentRepository {
     //ket noi DB
     private static Student[] studentList;
     private static int size = 0;

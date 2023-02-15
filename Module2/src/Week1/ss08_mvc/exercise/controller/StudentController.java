@@ -1,4 +1,4 @@
-package ss08_mvc.controller;
+package Week1.ss08_mvc.controller;
 
 import ss08_mvc.model.Student;
 import ss08_mvc.service.StudentService;
@@ -7,7 +7,7 @@ import ss08_mvc.service.StudentServiceImpl;
 import java.util.Scanner;
 
 public class StudentController {
-    private static StudentService service = new StudentServiceImpl();
+    private static StudentService service = (StudentService) new StudentServiceImpl();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
