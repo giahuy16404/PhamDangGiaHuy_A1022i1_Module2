@@ -43,10 +43,11 @@ public class Mylist {
         for (int i = 0; i < elements.length; i++) {
             if (i == index) {
                 for (int j = i; j < elements.length + 1; j++) {
-                    size++;
                     elements[i + 1] = elements[i];
                 }
                 elements[i] = element;
+                size++;
+
             }
         }
     }
@@ -70,6 +71,7 @@ public class Mylist {
                     i++;
                 }
                 elements[elements.length - 1] = 0;
+                size--;
                 break;
             }
         }
@@ -102,5 +104,9 @@ public class Mylist {
             elements[i] = null;
         }
         size = 0;
+    }
+    public Object clone() throws CloneNotSupportedException {
+        Object clone = super.clone();
+        return clone;
     }
 }
