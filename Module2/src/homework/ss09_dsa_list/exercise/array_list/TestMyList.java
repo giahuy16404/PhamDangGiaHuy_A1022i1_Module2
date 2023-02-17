@@ -1,6 +1,5 @@
 package homework.ss09_dsa_list.exercise.array_list;
 
-
 public class TestMyList {
     public static void main(String[] args) {
         Mylist mylist = new Mylist();
