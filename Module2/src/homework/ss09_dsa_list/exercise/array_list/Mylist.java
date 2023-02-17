@@ -58,13 +58,7 @@ public class Mylist {
 
     //Lấy phần tử tại vị trí chỉ định
     public int get(int index) {
-        int sum = 0;
-        for (int i = 0; i < elements.length; i++) {
-            if (i == index) {
-                sum = (int) elements[i];
-            }
-        }
-        return sum;
+        return (int) elements[index];
     }
 
     //Xóa phần tử tại vị trí chỉ định.
