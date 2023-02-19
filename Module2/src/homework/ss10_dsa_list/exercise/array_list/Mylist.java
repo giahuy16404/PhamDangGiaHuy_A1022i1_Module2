@@ -1,8 +1,8 @@
-package homework.ss09_dsa_list.exercise.array_list;
+package homework.ss10_dsa_list.exercise.array_list;
 
 import java.util.Arrays;
 
-public class Mylist {
+public class Mylist<E> {
     private int size = 0;
     public static final int DEFUALT_CAPACITI = 10;
     private Object[] elements;
@@ -12,7 +12,8 @@ public class Mylist {
     }
 
     public Mylist(int size, Object[] elements) {
-        this.size = size;
+        this.size  = size;
+
         this.elements = elements;
     }
 
@@ -27,7 +28,7 @@ public class Mylist {
     }
 
     //Thêm vào cuối mảng.
-    public boolean add(int element) {
+    public boolean add(E element) {
         if (size == elements.length) {
             ensureCapacity();
         }
@@ -36,30 +37,28 @@ public class Mylist {
     }
 
     //Thêm vào mảng tại vị trí chỉ định.
-    public void add(int index, int element) {
+    public void add(int index, E element) {
         if (size == elements.length) {
             ensureCapacity();
         }
-        for (int i = 0; i < elements.length; i++) {
+        for (int i = 0; i < elements.length -1; i++) {
             if (i == index) {
-                for (int j = i; j < elements.length + 1; j++) {
-                    elements[i + 1] = elements[i];
+                for (int j = size; j > index-1 ; j--) {
+                    elements[j+1] = elements[j];
                 }
-                elements[i] = element;
+                elements[index] = element;
                 size++;
-
             }
         }
     }
-
     //Độ dài của mảng.
     public int size() {
         return size;
     }
 
     //Lấy phần tử tại vị trí chỉ định
-    public int get(int index) {
-        return (int) elements[index];
+    public Object get(int index) {
+        return  elements[index];
     }
 
     //Xóa phần tử tại vị trí chỉ định.
@@ -78,10 +77,14 @@ public class Mylist {
     }
 
     //Kiểm tra tham số truyền vào có trong mảng không, trả về true hoặc false.
-    public boolean contains(Object o) {
+    public boolean contains(E o) {
         boolean flag = false;
         for (Object element : elements) {
             flag = o.equals(element);
+            if (flag){
+                break;
+
+            }
         }
         return flag;
     }
@@ -105,8 +108,5 @@ public class Mylist {
         }
         size = 0;
     }
-    public Object clone() throws CloneNotSupportedException {
-        Object clone = super.clone();
-        return clone;
-    }
+
 }
