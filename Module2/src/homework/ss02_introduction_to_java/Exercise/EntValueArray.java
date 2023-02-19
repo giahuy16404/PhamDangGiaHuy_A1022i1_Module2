@@ -16,7 +16,6 @@ public class EntValueArray {
         }
         System.out.println("Nhập vào số cần chèn cần thêm trong mảng");
         int inputIndex = sc.nextInt();
-        int indexRemove = sc.nextInt();
         System.out.println("Nhập vào index cần chèn");
         int index = sc.nextInt();
 
@@ -27,7 +26,6 @@ public class EntValueArray {
                 newArr[i] = numbers[i]; // bé hơn v trí cần chnè thì gán vào
             } else if (i == index) { // bằng thì gán số cần chen;
                 newArr[i] = inputIndex;
-                newArr[i] = indexRemove;
             } else {
                 newArr[i] = numbers[i - 1]; //gán number trừ 1 vì đã gán index vào vị trí i trước đó;
             }
