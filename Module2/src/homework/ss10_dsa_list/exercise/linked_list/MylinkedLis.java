@@ -38,6 +38,4 @@ public class MylinkedLis <E>{
         head.next = temp;
         numNodes++;
     }
-
-
 }

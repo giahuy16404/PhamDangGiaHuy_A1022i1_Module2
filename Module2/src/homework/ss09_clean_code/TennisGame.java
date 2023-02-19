@@ -1,5 +1,4 @@
 package homework.ss09_clean_code;
-
 public class TennisGame {
     public static String getScore(String playerOneName, String playerTwoName, int scoreFirst, int m_scoreTwo) {
         String score = "";
