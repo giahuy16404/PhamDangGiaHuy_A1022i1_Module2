@@ -13,7 +13,6 @@ public class Mylist<E> {
 
     public Mylist(int size, Object[] elements) {
         this.size  = size;
-
         this.elements = elements;
     }
 

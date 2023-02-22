@@ -15,6 +15,7 @@ public class TestMyList {
         mylist.add(8);
         mylist.add(2,2);
         mylist.add(6,6);
+        System.out.println(mylist);
         System.out.println(mylist.size());
         System.out.println(mylist.indexOf(2));
         System.out.println(mylist.contains(3));

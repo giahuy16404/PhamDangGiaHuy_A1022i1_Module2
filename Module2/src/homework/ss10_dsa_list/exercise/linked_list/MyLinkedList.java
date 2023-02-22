@@ -14,7 +14,6 @@ public class MyLinkedList<E> {
         }
     }
 
-
     private Node<E> head;
     private Node<E> last;
     private int size;
@@ -130,24 +129,24 @@ public class MyLinkedList<E> {
         }
         Node<E> current = head;
         for (int j = 0; j < i; j++) {
-             current = current.next;
+            current = current.next;
         }
         return current.element;
     }
 
-    public E getFirst(){
-        if (head == null){
+    public E getFirst() {
+        if (head == null) {
             throw new NoSuchElementException();
         }
         return head.element;
     }
 
-    public E getLast(){
-        if (head == null){
+    public E getLast() {
+        if (head == null) {
             throw new NoSuchElementException();
         }
         Node<E> current = head;
-        while (current.next!=null){
+        while (current.next != null) {
             current = current.next;
         }
         return current.element;

@@ -9,11 +9,8 @@ public class TestLinkedLis {
         myLinkedList.add(4);
 
 
-
-        for (int i = 0; i <myLinkedList.size() ; i++) {
+        for (int i = 0; i < myLinkedList.size(); i++) {
             System.out.println(myLinkedList.get(i));
         }
-
-
     }
 }
