@@ -23,7 +23,7 @@ public class PracticeTreeMap {
             }
         }
         for (Character key : map.keySet()) {
-            System.out.println(key + "-" + map.get(key));
+            System.out.println("Key :" +key + "     " + "Value: " + map.get(key));
         }
 
     }
