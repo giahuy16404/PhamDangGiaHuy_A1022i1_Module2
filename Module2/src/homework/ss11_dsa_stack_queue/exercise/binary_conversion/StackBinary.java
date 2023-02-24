@@ -17,6 +17,9 @@ public class StackBinary {
             stack.push(sumBinary);
             numberDecimal /= 2;
         }
-        System.out.println(stack);
+        while (!stack.isEmpty()) {
+            System.out.print(stack.pop());
+        }
+
     }
 }
