@@ -4,7 +4,9 @@ public class Product {
     private int idProduct;
     private String nameProduct;
     private int price;
-    Product(){}
+
+    Product() {
+    }
 
     public Product(int idProduct, String nameProduct, int price) {
         this.idProduct = idProduct;
@@ -32,17 +34,15 @@ public class Product {
         return nameProduct;
     }
 
-
-
     public void setNameProduct(String nameProduct) {
         this.nameProduct = nameProduct;
     }
+
     @Override
     public String toString() {
-        return  "----------------\n"+
-                "- Tên sản phẩm: "+ nameProduct + "\n"+
-               "- Mã sản phẩm: "+ idProduct + "\n"+
-                "- Giá sản phẩm: "+ price + " Vnd" +
-                "\n----------------";
+        return "----------------\n" +
+                "- Tên sản phẩm: " + nameProduct + "\n" +
+                "- Mã sản phẩm: " + idProduct + "\n" +
+                "- Giá sản phẩm: " + price + " Vnd";
     }
 }
