@@ -1,6 +1,6 @@
-package homework.ss12_java_collection_framework.controller;
+package homework.ss12_java_collection_framework.arraylist_product.controller;
 
-import homework.ss12_java_collection_framework.model.ProductRepository;
+import homework.ss12_java_collection_framework.arraylist_product.model.ProductRepository;
 
 import java.util.Scanner;
 
