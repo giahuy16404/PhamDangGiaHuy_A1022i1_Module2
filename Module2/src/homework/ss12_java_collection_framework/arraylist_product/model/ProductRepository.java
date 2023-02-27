@@ -1,9 +1,6 @@
 package homework.ss12_java_collection_framework.arraylist_product.model;
 
-import homework.ss12_java_collection_framework.linkedlist_product.model.LinkedListProduct;
-
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 public class ProductRepository implements IProductRepository {

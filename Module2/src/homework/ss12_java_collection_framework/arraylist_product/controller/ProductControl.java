@@ -1,14 +1,13 @@
 package homework.ss12_java_collection_framework.arraylist_product.controller;
 
 import homework.ss12_java_collection_framework.arraylist_product.model.ProductRepository;
-import homework.ss12_java_collection_framework.linkedlist_product.model.LinkedProductRepo;
 
 import java.util.Scanner;
 
 public class ProductControl {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        LinkedProductRepo product = new LinkedProductRepo();
+        ProductRepository product = new ProductRepository();
         int select;
 
         do {
@@ -32,7 +31,7 @@ public class ProductControl {
                     int idProduct = sc.nextInt();
                     System.out.println("3.Nhập vào giá sản phẩm");
                     int priceProduct = sc.nextInt();
-                    product.addProduct(idProduct,nameProduct,priceProduct);
+                    product.addProduct(idProduct, nameProduct, priceProduct);
                     break;
                 case 2:
                     System.out.println("Mời bạn nhập mã:");

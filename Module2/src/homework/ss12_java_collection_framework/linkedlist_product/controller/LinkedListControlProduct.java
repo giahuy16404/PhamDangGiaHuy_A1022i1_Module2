@@ -31,7 +31,7 @@ public class LinkedListControlProduct {
                     int idProduct = sc.nextInt();
                     System.out.println("3.Nhập vào giá sản phẩm");
                     int priceProduct = sc.nextInt();
-                    product.addProduct(idProduct,nameProduct,priceProduct);
+                    product.addProduct(idProduct, nameProduct, priceProduct);
                     break;
                 case 2:
                     System.out.println("Mời bạn nhập mã:");
