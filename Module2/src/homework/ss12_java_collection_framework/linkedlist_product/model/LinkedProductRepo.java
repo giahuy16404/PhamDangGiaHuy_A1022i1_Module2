@@ -1,5 +1,7 @@
 package homework.ss12_java_collection_framework.linkedlist_product.model;
 
+import homework.ss12_java_collection_framework.arraylist_product.model.Product;
+
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -9,22 +11,7 @@ public class LinkedProductRepo implements ILinkedProductRepo {
 
     @Override
     public void addProduct(int id, String name, int price) {
-        byte sellect;
-        do {
-
-            for (int i = 0; i < linkedList.size(); i++) {
-                if (id == linkedList.get(i).getIdProduct()) {
-                    System.out.println("Id đã có xin mời nhập lại");
-                    id = sc.nextInt();
-                }
-            }
-            linkedList.add(new LinkedListProduct(id, name, price));
-            System.out.println("1.Tiếp tục thêm sản phâm:");
-            System.out.println("2.Thoát:");
-            sellect = sc.nextByte();
-            sc.nextLine();
-        } while (sellect < 2);
-        sc.nextLine();
+        linkedList.add(new LinkedListProduct(id, name, price));
     }
 
 
@@ -52,7 +39,11 @@ public class LinkedProductRepo implements ILinkedProductRepo {
                         case 2:
                             System.out.println("Mời bạn nhập mã mới:");
                             int newIdProduct = sc.nextInt();
-                            linkedList.get(i).setIdProduct(newIdProduct);
+                            if (newIdProduct == linkedList.get(i).getIdProduct()) {
+                                System.out.println("Id đã có xin mời nhập lại");
+                                id = sc.nextInt();
+                            }
+                            linkedList.get(i).setIdProduct(id);
                             break;
 
                         case 3:

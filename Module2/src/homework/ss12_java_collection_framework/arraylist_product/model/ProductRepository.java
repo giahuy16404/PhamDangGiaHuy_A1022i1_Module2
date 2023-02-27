@@ -1,6 +1,9 @@
 package homework.ss12_java_collection_framework.arraylist_product.model;
 
+import homework.ss12_java_collection_framework.linkedlist_product.model.LinkedListProduct;
+
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class ProductRepository implements IProductRepository {
@@ -9,22 +12,7 @@ public class ProductRepository implements IProductRepository {
 
     @Override
     public void addProduct(int id, String name, int price) {
-        byte sellect;
-        do {
-
-            for (int i = 0; i < arrayList.size(); i++) {
-                if (id == arrayList.get(i).getIdProduct()) {
-                    System.out.println("Id đã có xin mời nhập lại");
-                    id = sc.nextInt();
-                }
-            }
             arrayList.add(new Product(id, name, price));
-            System.out.println("1.Tiếp tục thêm sản phâm:");
-            System.out.println("2.Thoát:");
-            sellect = sc.nextByte();
-            sc.nextLine();
-        } while (sellect < 2);
-        sc.nextLine();
     }
 
 
@@ -181,4 +169,5 @@ public class ProductRepository implements IProductRepository {
 
         } while (sellect < 2);
     }
-}
+    }
+

@@ -1,5 +1,6 @@
 package homework.ss12_java_collection_framework.linkedlist_product.controller;
 
+import homework.ss12_java_collection_framework.linkedlist_product.model.LinkedListProduct;
 import homework.ss12_java_collection_framework.linkedlist_product.model.LinkedProductRepo;
 
 import java.util.Scanner;
@@ -22,16 +23,24 @@ public class LinkedListControlProduct {
             System.out.println("==  7.Thoát:                                               ==");
             System.out.println("==                                                         ==");
             System.out.println("===========================GIAHUY============================");
-            select = sc.nextByte();
-            switch (select) {
+            select = sc.nextInt();
+            sc.nextLine();
+            switch (select){
                 case 1:
-                    System.out.println("1.Nhập vào tên sản phẩm:");
-                    String nameProduct = sc.nextLine();
-                    System.out.println("2.Nhập vào id sản phẩm:");
-                    int idProduct = sc.nextInt();
-                    System.out.println("3.Nhập vào giá sản phẩm");
-                    int priceProduct = sc.nextInt();
-                    product.addProduct(idProduct, nameProduct, priceProduct);
+                    int check;
+                    do {
+                        System.out.println("1.Nhập vào tên sản phẩm:");
+                        String nameProduct = sc.nextLine();
+                        System.out.println("2.Nhập vào id sản phẩm:");
+                        int idProduct = sc.nextInt();
+                        System.out.println("3.Nhập vào giá sản phẩm");
+                        int priceProduct = sc.nextInt();
+                        product.addProduct(idProduct,nameProduct,priceProduct);
+                        System.out.println("1.Tiếp tục thêm sản phâm:");
+                        System.out.println("2.Thoát:");
+                        check  = sc.nextInt();
+                        sc.nextLine();
+                    } while (check < 2);
                     break;
                 case 2:
                     System.out.println("Mời bạn nhập mã:");
