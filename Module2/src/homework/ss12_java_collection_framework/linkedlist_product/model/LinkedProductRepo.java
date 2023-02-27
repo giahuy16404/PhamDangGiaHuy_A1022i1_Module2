@@ -8,22 +8,17 @@ public class LinkedProductRepo implements ILinkedProductRepo {
     Scanner sc = new Scanner(System.in);
 
     @Override
-    public void addProduct() {
+    public void addProduct(int id, String name, int price) {
         byte sellect;
         do {
-            System.out.println("1.Nhập vào tên sản phẩm:");
-            String nameProduct = sc.nextLine();
-            System.out.println("2.Nhập vào id sản phẩm:");
-            int idProduct = sc.nextInt();
+
             for (int i = 0; i < linkedList.size(); i++) {
-                if (idProduct == linkedList.get(i).getIdProduct()) {
+                if (id == linkedList.get(i).getIdProduct()) {
                     System.out.println("Id đã có xin mời nhập lại");
-                    idProduct = sc.nextInt();
+                    id = sc.nextInt();
                 }
             }
-            System.out.println("3.Nhập vào giá sản phẩm");
-            int priceProduct = sc.nextInt();
-            linkedList.add(new LinkedListProduct(idProduct, nameProduct, priceProduct));
+            linkedList.add(new LinkedListProduct(id, name, price));
             System.out.println("1.Tiếp tục thêm sản phâm:");
             System.out.println("2.Thoát:");
             sellect = sc.nextByte();
@@ -34,15 +29,14 @@ public class LinkedProductRepo implements ILinkedProductRepo {
 
 
     @Override
-    public void editProductID() {
+    public void editProductID(int id) {
         byte sellect;
         do {
-            System.out.println("Mời bạn nhập mã:");
-            int checkProduct = sc.nextInt();
+
             boolean check = false;
             for (int i = 0; i < linkedList.size(); i++) {
                 int getIdProduct = linkedList.get(i).getIdProduct();
-                if (getIdProduct == checkProduct) {
+                if (getIdProduct == id) {
                     System.out.println("1.Thay đổi tên sản phẩm: ");
                     System.out.println("2.Thay đổi mã sản phẩm: ");
                     System.out.println("3.Thay đổi giá sản phẩm: ");
@@ -89,15 +83,14 @@ public class LinkedProductRepo implements ILinkedProductRepo {
 
 
     @Override
-    public void removeProductID() {
+    public void removeProductID(int id) {
         byte sellect;
         do {
-            System.out.println("Mời bạn nhập mã:");
-            int checkProduct = sc.nextInt();
+
             sc.nextLine();
             for (int i = 0; i < linkedList.size(); i++) {
                 int getIdProduct = linkedList.get(i).getIdProduct();
-                if (getIdProduct == checkProduct) {
+                if (getIdProduct == id) {
                     linkedList.remove(i);
                 }
             }
@@ -117,21 +110,19 @@ public class LinkedProductRepo implements ILinkedProductRepo {
     }
 
     @Override
-    public void searchProductName() {
+    public void searchProductName(String name) {
         byte sellect;
         do {
-            System.out.println("Mời bạn nhập tên sản phẩm:");
-            String checkProduct = sc.nextLine();
             boolean check = false;
             for (int i = 0; i < linkedList.size(); i++) {
                 String getNamedProduct = linkedList.get(i).getNameProduct();
-                if (checkProduct.equals(getNamedProduct)) {
+                if (name.equals(getNamedProduct)) {
                     System.out.println(linkedList.get(i));
                     check = true;
                 }
             }
             if (!check) {
-                System.out.println("Không tìm thấy sản phẩm có tên '" + checkProduct + "'.");
+                System.out.println("Không tìm thấy sản phẩm có tên '" + name + "'.");
             }
             System.out.println("1.Bạn muốn tiếp tục xem sản phẩm:");
             System.out.println("2.Thoát:");

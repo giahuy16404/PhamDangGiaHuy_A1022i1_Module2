@@ -1,14 +1,16 @@
 package homework.ss12_java_collection_framework.arraylist_product.controller;
 
 import homework.ss12_java_collection_framework.arraylist_product.model.ProductRepository;
+import homework.ss12_java_collection_framework.linkedlist_product.model.LinkedProductRepo;
 
 import java.util.Scanner;
 
 public class ProductControl {
     public static void main(String[] args) {
-        ProductRepository productRepository = new ProductRepository();
         Scanner sc = new Scanner(System.in);
+        LinkedProductRepo product = new LinkedProductRepo();
         int select;
+
         do {
             System.out.println("================CHƯƠNG TRÌNH QUẢN LÝ SẢN PHẨM================");
             System.out.println("==                                                         ==");
@@ -24,22 +26,34 @@ public class ProductControl {
             select = sc.nextByte();
             switch (select) {
                 case 1:
-                    productRepository.addProduct();
+                    System.out.println("1.Nhập vào tên sản phẩm:");
+                    String nameProduct = sc.nextLine();
+                    System.out.println("2.Nhập vào id sản phẩm:");
+                    int idProduct = sc.nextInt();
+                    System.out.println("3.Nhập vào giá sản phẩm");
+                    int priceProduct = sc.nextInt();
+                    product.addProduct(idProduct,nameProduct,priceProduct);
                     break;
                 case 2:
-                    productRepository.editProductID();
+                    System.out.println("Mời bạn nhập mã:");
+                    int editProduct = sc.nextInt();
+                    product.editProductID(editProduct);
                     break;
                 case 3:
-                    productRepository.removeProductID();
+                    System.out.println("Mời bạn nhập mã:");
+                    int removeProduct = sc.nextInt();
+                    product.removeProductID(removeProduct);
                     break;
                 case 4:
-                    productRepository.showProduct();
+                    product.showProduct();
                     break;
                 case 5:
-                    productRepository.searchProductName();
+                    System.out.println("Mời bạn nhập tên sản phẩm:");
+                    String showNameProduct = sc.nextLine();
+                    product.searchProductName(showNameProduct);
                     break;
                 case 6:
-                    productRepository.productPriceChange();
+                    product.productPriceChange();
                     break;
             }
         } while (select < 7);

@@ -25,19 +25,31 @@ public class LinkedListControlProduct {
             select = sc.nextByte();
             switch (select) {
                 case 1:
-                    product.addProduct();
+                    System.out.println("1.Nhập vào tên sản phẩm:");
+                    String nameProduct = sc.nextLine();
+                    System.out.println("2.Nhập vào id sản phẩm:");
+                    int idProduct = sc.nextInt();
+                    System.out.println("3.Nhập vào giá sản phẩm");
+                    int priceProduct = sc.nextInt();
+                    product.addProduct(idProduct,nameProduct,priceProduct);
                     break;
                 case 2:
-                    product.editProductID();
+                    System.out.println("Mời bạn nhập mã:");
+                    int editProduct = sc.nextInt();
+                    product.editProductID(editProduct);
                     break;
                 case 3:
-                    product.removeProductID();
+                    System.out.println("Mời bạn nhập mã:");
+                    int removeProduct = sc.nextInt();
+                    product.removeProductID(removeProduct);
                     break;
                 case 4:
                     product.showProduct();
                     break;
                 case 5:
-                    product.searchProductName();
+                    System.out.println("Mời bạn nhập tên sản phẩm:");
+                    String showNameProduct = sc.nextLine();
+                    product.searchProductName(showNameProduct);
                     break;
                 case 6:
                     product.productPriceChange();

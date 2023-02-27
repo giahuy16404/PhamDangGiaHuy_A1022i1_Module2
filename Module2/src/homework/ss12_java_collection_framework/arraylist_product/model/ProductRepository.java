@@ -1,29 +1,27 @@
 package homework.ss12_java_collection_framework.arraylist_product.model;
 
+import homework.ss12_java_collection_framework.linkedlist_product.model.LinkedListProduct;
+
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class ProductRepository implements IProductRepository {
-    ArrayList<Product> arrayProduct = new ArrayList<>();
+    ArrayList<Product> arrayList = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
 
-    public void addProduct() {
+    @Override
+    public void addProduct(int id, String name, int price) {
         byte sellect;
         do {
-            System.out.println("1.Nhập vào tên sản phẩm:");
-            String nameProduct = sc.nextLine();
-            System.out.println("2.Nhập vào id sản phẩm:");
-            int idProduct = sc.nextInt();
-            for (int i = 0; i <arrayProduct.size() ; i++) {
-                if (idProduct == arrayProduct.get(i).getIdProduct()){
+
+            for (int i = 0; i < arrayList.size(); i++) {
+                if (id == arrayList.get(i).getIdProduct()) {
                     System.out.println("Id đã có xin mời nhập lại");
-                    idProduct = sc.nextInt();
+                    id = sc.nextInt();
                 }
             }
-            System.out.println("3.Nhập vào giá sản phẩm");
-            int priceProduct = sc.nextInt();
-            arrayProduct.add(new Product(idProduct, nameProduct, priceProduct));
-
+            arrayList.add(new Product(id, name, price));
             System.out.println("1.Tiếp tục thêm sản phâm:");
             System.out.println("2.Thoát:");
             sellect = sc.nextByte();
@@ -32,16 +30,16 @@ public class ProductRepository implements IProductRepository {
         sc.nextLine();
     }
 
+
     @Override
-    public void editProductID() {
+    public void editProductID(int id) {
         byte sellect;
         do {
-            System.out.println("Mời bạn nhập mã:");
-            int checkProduct = sc.nextInt();
+
             boolean check = false;
-            for (int i = 0; i < arrayProduct.size(); i++) {
-                int getIdProduct = arrayProduct.get(i).getIdProduct();
-                if (getIdProduct == checkProduct) {
+            for (int i = 0; i < arrayList.size(); i++) {
+                int getIdProduct = arrayList.get(i).getIdProduct();
+                if (getIdProduct == id) {
                     System.out.println("1.Thay đổi tên sản phẩm: ");
                     System.out.println("2.Thay đổi mã sản phẩm: ");
                     System.out.println("3.Thay đổi giá sản phẩm: ");
@@ -52,18 +50,18 @@ public class ProductRepository implements IProductRepository {
                         case 1:
                             System.out.println("Mời bạn nhập tên mới:");
                             String newNameProduct = sc.nextLine();
-                            arrayProduct.get(i).setNameProduct(newNameProduct);
+                            arrayList.get(i).setNameProduct(newNameProduct);
                             break;
                         case 2:
                             System.out.println("Mời bạn nhập mã mới:");
                             int newIdProduct = sc.nextInt();
-                            arrayProduct.get(i).setIdProduct(newIdProduct);
+                            arrayList.get(i).setIdProduct(newIdProduct);
                             break;
 
                         case 3:
                             System.out.println("Mời bạn nhập giá mới:");
                             int newPrice = sc.nextInt();
-                            arrayProduct.get(i).setPrice(newPrice);
+                            arrayList.get(i).setPrice(newPrice);
                             break;
                         default:
                             System.out.println("Tính năng không hợp lệ, vui lòng chọn lại!");
@@ -86,17 +84,17 @@ public class ProductRepository implements IProductRepository {
         } while (sellect < 2);
     }
 
+
     @Override
-    public void removeProductID() {
+    public void removeProductID(int id) {
         byte sellect;
         do {
-            System.out.println("Mời bạn nhập mã:");
-            int checkProduct = sc.nextInt();
+
             sc.nextLine();
-            for (int i = 0; i < arrayProduct.size(); i++) {
-                int getIdProduct = arrayProduct.get(i).getIdProduct();
-                if (getIdProduct == checkProduct) {
-                    arrayProduct.remove(i);
+            for (int i = 0; i < arrayList.size(); i++) {
+                int getIdProduct = arrayList.get(i).getIdProduct();
+                if (getIdProduct == id) {
+                    arrayList.remove(i);
                 }
             }
             System.out.println("1.Bạn muốn tiếp tục xóa sản phẩm:");
@@ -109,27 +107,25 @@ public class ProductRepository implements IProductRepository {
 
     public void showProduct() {
         System.out.println("Danh sách sản phẩm:");
-        for (int i = 0; i < arrayProduct.size(); i++) {
-            System.out.println(arrayProduct.get(i));
+        for (int i = 0; i < arrayList.size(); i++) {
+            System.out.println(arrayList.get(i));
         }
     }
 
     @Override
-    public void searchProductName() {
+    public void searchProductName(String name) {
         byte sellect;
         do {
-            System.out.println("Mời bạn nhập tên sản phẩm:");
-            String checkProduct = sc.nextLine();
             boolean check = false;
-            for (int i = 0; i < arrayProduct.size(); i++) {
-                String getNamedProduct = arrayProduct.get(i).getNameProduct();
-                if (checkProduct.equals(getNamedProduct)) {
-                    System.out.println(arrayProduct.get(i));
+            for (int i = 0; i < arrayList.size(); i++) {
+                String getNamedProduct = arrayList.get(i).getNameProduct();
+                if (name.equals(getNamedProduct)) {
+                    System.out.println(arrayList.get(i));
                     check = true;
                 }
             }
             if (!check) {
-                System.out.println("Không tìm thấy sản phẩm có tên '" + checkProduct + "'.");
+                System.out.println("Không tìm thấy sản phẩm có tên '" + name + "'.");
             }
             System.out.println("1.Bạn muốn tiếp tục xem sản phẩm:");
             System.out.println("2.Thoát:");
@@ -148,36 +144,36 @@ public class ProductRepository implements IProductRepository {
             byte checkPriceChange = sc.nextByte();
             switch (checkPriceChange) {
                 case 1:
-                    for (int i = 0; i < arrayProduct.size() - 1; i++) {
-                        for (int j = i + 1; j < arrayProduct.size(); j++) {
-                            int priceFirst = arrayProduct.get(i).getPrice();
-                            int priceSecond = arrayProduct.get(j).getPrice();
+                    for (int i = 0; i < arrayList.size() - 1; i++) {
+                        for (int j = i + 1; j < arrayList.size(); j++) {
+                            int priceFirst = arrayList.get(i).getPrice();
+                            int priceSecond = arrayList.get(j).getPrice();
                             if (priceFirst > priceSecond) {
                                 int valuePriceChange = priceFirst;
-                                arrayProduct.get(i).setPrice(priceSecond);
-                                arrayProduct.get(j).setPrice(valuePriceChange);
+                                arrayList.get(i).setPrice(priceSecond);
+                                arrayList.get(j).setPrice(valuePriceChange);
                             }
                         }
                     }
-                    for (int i = 0; i < arrayProduct.size(); i++) {
-                        System.out.println(arrayProduct.get(i));
+                    for (int i = 0; i < arrayList.size(); i++) {
+                        System.out.println(arrayList.get(i));
                     }
                     break;
                 case 2:
-                    for (int i = 0; i < arrayProduct.size() - 1; i++) {
-                        for (int j = i + 1; j < arrayProduct.size(); j++) {
-                            int priceFirst = arrayProduct.get(i).getPrice();
-                            int priceSecond = arrayProduct.get(j).getPrice();
+                    for (int i = 0; i < arrayList.size() - 1; i++) {
+                        for (int j = i + 1; j < arrayList.size(); j++) {
+                            int priceFirst = arrayList.get(i).getPrice();
+                            int priceSecond = arrayList.get(j).getPrice();
 
                             if (priceFirst < priceSecond) {
                                 int valuePriceChange = priceFirst;
-                                arrayProduct.get(i).setPrice(priceSecond);
-                                arrayProduct.get(j).setPrice(valuePriceChange);
+                                arrayList.get(i).setPrice(priceSecond);
+                                arrayList.get(j).setPrice(valuePriceChange);
                             }
                         }
                     }
-                    for (int i = 0; i < arrayProduct.size(); i++) {
-                        System.out.println(arrayProduct.get(i));
+                    for (int i = 0; i < arrayList.size(); i++) {
+                        System.out.println(arrayList.get(i));
                     }
                     break;
             }
