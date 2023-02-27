@@ -1,6 +1,5 @@
 package homework.ss12_java_collection_framework.linkedlist_product.controller;
 
-import homework.ss12_java_collection_framework.linkedlist_product.model.LinkedListProduct;
 import homework.ss12_java_collection_framework.linkedlist_product.model.LinkedProductRepo;
 
 import java.util.Scanner;
@@ -8,7 +7,7 @@ import java.util.Scanner;
 public class LinkedListControlProduct {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-            LinkedProductRepo product = new LinkedProductRepo();
+        LinkedProductRepo product = new LinkedProductRepo();
         int select;
 
         do {
@@ -32,7 +31,7 @@ public class LinkedListControlProduct {
                     product.editProductID();
                     break;
                 case 3:
-                    product.editProductID();
+                    product.removeProductID();
                     break;
                 case 4:
                     product.showProduct();

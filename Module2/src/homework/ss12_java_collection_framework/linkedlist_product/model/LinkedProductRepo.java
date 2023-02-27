@@ -1,7 +1,5 @@
 package homework.ss12_java_collection_framework.linkedlist_product.model;
 
-import homework.ss12_java_collection_framework.arraylist_product.model.Product;
-
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -185,6 +183,5 @@ public class LinkedProductRepo implements ILinkedProductRepo {
             sellect = sc.nextByte();
 
         } while (sellect < 2);
-
     }
 }
