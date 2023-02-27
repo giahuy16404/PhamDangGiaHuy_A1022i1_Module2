@@ -1,18 +1,15 @@
 package homework.ss12_java_collection_framework.arraylist_product.model;
 
-import homework.ss12_java_collection_framework.linkedlist_product.model.LinkedListProduct;
-
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Scanner;
 
-public class ProductRepository implements IProductRepository {
+public class ProductRepository implements IProductRepository{
     ArrayList<Product> arrayList = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
 
     @Override
     public void addProduct(int id, String name, int price) {
-            arrayList.add(new Product(id, name, price));
+        arrayList.add(new Product(id, name, price));
     }
 
 
@@ -169,5 +166,5 @@ public class ProductRepository implements IProductRepository {
 
         } while (sellect < 2);
     }
-    }
+}
 

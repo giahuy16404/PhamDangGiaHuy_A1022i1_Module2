@@ -1,6 +1,5 @@
 package homework.ss12_java_collection_framework.linkedlist_product.controller;
 
-import homework.ss12_java_collection_framework.linkedlist_product.model.LinkedListProduct;
 import homework.ss12_java_collection_framework.linkedlist_product.model.LinkedProductRepo;
 
 import java.util.Scanner;
