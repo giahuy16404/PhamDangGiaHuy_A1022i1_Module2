@@ -14,6 +14,12 @@ public class ProductRepository implements IProductRepository {
             String nameProduct = sc.nextLine();
             System.out.println("2.Nhập vào id sản phẩm:");
             int idProduct = sc.nextInt();
+            for (int i = 0; i <arrayProduct.size() ; i++) {
+                if (idProduct == arrayProduct.get(i).getIdProduct()){
+                    System.out.println("Id đã có xin mời nhập lại");
+                    idProduct = sc.nextInt();
+                }
+            }
             System.out.println("3.Nhập vào giá sản phẩm");
             int priceProduct = sc.nextInt();
             arrayProduct.add(new Product(idProduct, nameProduct, priceProduct));

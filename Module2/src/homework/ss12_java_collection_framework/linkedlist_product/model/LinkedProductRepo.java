@@ -15,6 +15,12 @@ public class LinkedProductRepo implements ILinkedProductRepo {
             String nameProduct = sc.nextLine();
             System.out.println("2.Nhập vào id sản phẩm:");
             int idProduct = sc.nextInt();
+            for (int i = 0; i < linkedList.size(); i++) {
+                if (idProduct == linkedList.get(i).getIdProduct()) {
+                    System.out.println("Id đã có xin mời nhập lại");
+                    idProduct = sc.nextInt();
+                }
+            }
             System.out.println("3.Nhập vào giá sản phẩm");
             int priceProduct = sc.nextInt();
             linkedList.add(new LinkedListProduct(idProduct, nameProduct, priceProduct));
