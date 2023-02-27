@@ -21,6 +21,7 @@ public class ProductRepository implements IProductRepository {
             System.out.println("1.Tiếp tục thêm sản phâm:");
             System.out.println("2.Thoát:");
             sellect = sc.nextByte();
+            sc.nextLine();
         } while (sellect < 2);
         sc.nextLine();
     }
