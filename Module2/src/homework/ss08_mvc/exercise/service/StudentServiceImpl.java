@@ -4,7 +4,7 @@ import ss08_mvc.model.Student;
 import ss08_mvc.repository.StudentRepository;
 import ss08_mvc.repository.StudentRepositoryImpl;
 
-public class StudentServiceImpl implements StudentService{
+public class StudentServiceImpl implements ss08_mvc.service.StudentService {
     private StudentRepository repository = new StudentRepositoryImpl();
 
     @Override

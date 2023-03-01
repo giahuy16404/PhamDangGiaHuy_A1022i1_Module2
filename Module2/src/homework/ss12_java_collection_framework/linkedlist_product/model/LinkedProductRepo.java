@@ -77,8 +77,6 @@ public class LinkedProductRepo implements ILinkedProductRepo {
     public void removeProductID(int id) {
         byte sellect;
         do {
-
-            sc.nextLine();
             for (int i = 0; i < linkedList.size(); i++) {
                 int getIdProduct = linkedList.get(i).getIdProduct();
                 if (getIdProduct == id) {

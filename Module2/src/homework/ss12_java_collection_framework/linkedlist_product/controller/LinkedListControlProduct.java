@@ -48,7 +48,7 @@ public class LinkedListControlProduct {
                     break;
                 case 3:
                     System.out.println("Mời bạn nhập mã:");
-                    int removeProduct = sc.nextInt();
+                    int removeProduct = Integer.parseInt(sc.nextLine());
                     product.removeProductID(removeProduct);
                     break;
                 case 4:

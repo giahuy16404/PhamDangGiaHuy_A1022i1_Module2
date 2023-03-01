@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 
 public class MyLinkedList<E> {
     private class Node<E> {
-        private MyLinkedList<E>.Node<E> next;
+        private Node<E> next;
         private E element;
 
         Node(E element) {
@@ -89,10 +89,10 @@ public class MyLinkedList<E> {
             return true;
         }
         while (current.next != null) {
-            if (head.element.equals(e)) {
+            if (current.next.element.equals(e)) {
                 current.next = current.next.next;
                 size--;
-                return true;
+                break;
             }
             current = current.next;
         }

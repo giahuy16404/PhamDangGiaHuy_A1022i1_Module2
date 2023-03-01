@@ -12,12 +12,10 @@ public class ProductRepository implements IProductRepository{
         arrayList.add(new Product(id, name, price));
     }
 
-
     @Override
     public void editProductID(int id) {
         byte sellect;
         do {
-
             boolean check = false;
             for (int i = 0; i < arrayList.size(); i++) {
                 int getIdProduct = arrayList.get(i).getIdProduct();
@@ -71,8 +69,6 @@ public class ProductRepository implements IProductRepository{
     public void removeProductID(int id) {
         byte sellect;
         do {
-
-            sc.nextLine();
             for (int i = 0; i < arrayList.size(); i++) {
                 int getIdProduct = arrayList.get(i).getIdProduct();
                 if (getIdProduct == id) {

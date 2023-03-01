@@ -1,10 +1,11 @@
 package homework.ss09_clean_code;
+
 public class TennisGame {
-    public static String getScore(String playerOneName, String playerTwoName, int scoreFirst, int m_scoreTwo) {
+    public static String getScore(String playerOneName, String playerTwoName, int firstSecore, int twoSecore) {
         String score = "";
         int tempScore = 0;
-        if (scoreFirst == m_scoreTwo) {
-            switch (scoreFirst) {
+        if (firstSecore == twoSecore) {
+            switch (firstSecore) {
                 case 0:
                     score = "Love-All";
                     break;
@@ -22,18 +23,23 @@ public class TennisGame {
                     break;
 
             }
-        } else if (scoreFirst >= 4 || m_scoreTwo >= 4) {
-            int minusResult = scoreFirst - m_scoreTwo;
-            if (minusResult == 1) score = "Advantage playerOne";
-            else if (minusResult == -1) score = "Advantage playerTwo";
-            else if (minusResult >= 2) score = "Win for playerTwo";
-            else score = "Win for playerTwo";
-        } else {
+        } else if (firstSecore >= 4 || twoSecore >= 4) {
+            int minusResult = firstSecore - twoSecore;
+            if (minusResult == 1) {
+                score = "Advantage playerOne";
+            } else if (minusResult == -1) {
+                score = "Advantage playerTwo";
+            } else if (minusResult >= 2) {
+                score = "Win for playerTwo";
+            } else {
+                score = "Win for playerTwo";
+            }
             for (int i = 1; i < 3; i++) {
-                if (i == 1) tempScore = scoreFirst;
-                else {
+                if (i == 1) {
+                    tempScore = firstSecore;
+                } else {
                     score += "-";
-                    tempScore = m_scoreTwo;
+                    tempScore = twoSecore;
                 }
                 switch (tempScore) {
                     case 0:
