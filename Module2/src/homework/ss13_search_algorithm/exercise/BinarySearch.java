@@ -1,12 +1,14 @@
 package homework.ss13_search_algorithm.exercise;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class BinarySearch {
     static int[] binarySort(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[i] > arr[j]) {
+        for (int i = 1; i < arr.length; i++) {
+            for (int j =0; j < arr.length -1; j++) {
+                if (arr[j] > arr[j + 1]) {
                     int holdVlaue = arr[i];
                     arr[i] = arr[j];
                     arr[j] = holdVlaue;
@@ -17,18 +19,19 @@ public class BinarySearch {
     }
 
     static int binarySearch(int[] list, int left, int right, int key) {
-        int[] valueSortArr = binarySort(list);
+//        int[] valueSortArr = binarySort(list);
+        Arrays.sort(list);
         int mid = (left + right) / 2;
         if (left >= right) {
             return -1;
         }
-        if (valueSortArr[mid] == key) {
+        if (list[mid] == key) {
             return mid;
         }
-        if (key > valueSortArr[mid]) {
-            return binarySearch(valueSortArr, mid + 1, right, key);
+        if (key > list[mid]) {
+            return binarySearch(list, mid + 1, right, key);
         }
-        return binarySearch(valueSortArr, left, mid - 1, key);
+        return binarySearch(list, left, mid - 1, key);
     }
 
     public static void main(String[] args) {
