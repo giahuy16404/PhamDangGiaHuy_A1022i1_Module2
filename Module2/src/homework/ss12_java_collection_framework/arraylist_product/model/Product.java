@@ -1,6 +1,6 @@
 package homework.ss12_java_collection_framework.arraylist_product.model;
 
-public class Product {
+public class Product implements Comparable<Product>{
     private int idProduct;
     private String nameProduct;
     private int price;
@@ -44,5 +44,10 @@ public class Product {
                 "- Tên sản phẩm: " + nameProduct + "\n" +
                 "- Mã sản phẩm: " + idProduct + "\n" +
                 "- Giá sản phẩm: " + price + " Vnd";
+    }
+
+    @Override
+    public int compareTo(Product product) {
+        return Integer.compare(this.price,product.getPrice());
     }
 }

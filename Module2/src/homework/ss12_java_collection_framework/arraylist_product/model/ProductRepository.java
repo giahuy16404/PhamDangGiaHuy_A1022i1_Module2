@@ -1,9 +1,11 @@
 package homework.ss12_java_collection_framework.arraylist_product.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Scanner;
 
-public class ProductRepository implements IProductRepository{
+public class ProductRepository implements IProductRepository {
     ArrayList<Product> arrayList = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
 
@@ -115,52 +117,37 @@ public class ProductRepository implements IProductRepository{
 
     @Override
     public void productPriceChange() {
-        byte sellect;
-        do {
-            System.out.println("1.Sắp xếp giá từ thấp đến cao:");
-            System.out.println("2.Sắp xếp giá từ cao đến thấp:");
-            byte checkPriceChange = sc.nextByte();
-            switch (checkPriceChange) {
+        Scanner scanner = new Scanner(System.in);
+        int check = 0;
+
+       do {
+            System.out.println("1. Sắp xếp giá từ thấp đến cao");
+            System.out.println("2. Sắp xếp giá từ cao đến thấp");
+            int sortOption = scanner.nextInt();
+
+            switch (sortOption) {
                 case 1:
-                    for (int i = 0; i < arrayList.size() - 1; i++) {
-                        for (int j = i + 1; j < arrayList.size(); j++) {
-                            int priceFirst = arrayList.get(i).getPrice();
-                            int priceSecond = arrayList.get(j).getPrice();
-                            if (priceFirst > priceSecond) {
-                                int valuePriceChange = priceFirst;
-                                arrayList.get(i).setPrice(priceSecond);
-                                arrayList.get(j).setPrice(valuePriceChange);
-                            }
-                        }
-                    }
-                    for (int i = 0; i < arrayList.size(); i++) {
-                        System.out.println(arrayList.get(i));
-                    }
+                    Collections.sort(arrayList);
                     break;
                 case 2:
-                    for (int i = 0; i < arrayList.size() - 1; i++) {
-                        for (int j = i + 1; j < arrayList.size(); j++) {
-                            int priceFirst = arrayList.get(i).getPrice();
-                            int priceSecond = arrayList.get(j).getPrice();
-
-                            if (priceFirst < priceSecond) {
-                                int valuePriceChange = priceFirst;
-                                arrayList.get(i).setPrice(priceSecond);
-                                arrayList.get(j).setPrice(valuePriceChange);
-                            }
-                        }
-                    }
-                    for (int i = 0; i < arrayList.size(); i++) {
-                        System.out.println(arrayList.get(i));
-                    }
+                    Collections.sort(arrayList, Collections.reverseOrder());
                     break;
+                default:
+                    System.out.println("Lựa chọn không hợp lệ");
+                    continue;
             }
-            System.out.println("Bạn muốn tiếp tục săp xếp.");
-            System.out.println("1.Có");
-            System.out.println("2.Không");
-            sellect = sc.nextByte();
 
-        } while (sellect < 2);
+            System.out.println("Danh sách giá sản phẩm sau khi sắp xếp:");
+            for (Product price : arrayList) {
+                System.out.println(price);
+            }
+
+            System.out.println("Bạn muốn tiếp tục sắp xếp?");
+            System.out.println("1. Có");
+            System.out.println("2. Không");
+            check = scanner.nextInt();
+            
+        }while (check < 2);
     }
 }
 

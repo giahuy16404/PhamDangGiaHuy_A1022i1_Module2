@@ -2,6 +2,7 @@ package homework.ss12_java_collection_framework.linkedlist_product.model;
 
 import homework.ss12_java_collection_framework.arraylist_product.model.Product;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -123,51 +124,36 @@ public class LinkedProductRepo implements ILinkedProductRepo {
 
     @Override
     public void productPriceChange() {
-        byte sellect;
+        Scanner scanner = new Scanner(System.in);
+        int check = 0;
+
         do {
-            System.out.println("1.Sắp xếp giá từ thấp đến cao:");
-            System.out.println("2.Sắp xếp giá từ cao đến thấp:");
-            byte checkPriceChange = sc.nextByte();
-            switch (checkPriceChange) {
+            System.out.println("1. Sắp xếp giá từ thấp đến cao");
+            System.out.println("2. Sắp xếp giá từ cao đến thấp");
+            int sortOption = scanner.nextInt();
+
+            switch (sortOption) {
                 case 1:
-                    for (int i = 0; i < linkedList.size() - 1; i++) {
-                        for (int j = i + 1; j < linkedList.size(); j++) {
-                            int priceFirst = linkedList.get(i).getPrice();
-                            int priceSecond = linkedList.get(j).getPrice();
-                            if (priceFirst > priceSecond) {
-                                int valuePriceChange = priceFirst;
-                                linkedList.get(i).setPrice(priceSecond);
-                                linkedList.get(j).setPrice(valuePriceChange);
-                            }
-                        }
-                    }
-                    for (int i = 0; i < linkedList.size(); i++) {
-                        System.out.println(linkedList.get(i));
-                    }
+                    Collections.sort(linkedList);
                     break;
                 case 2:
-                    for (int i = 0; i < linkedList.size() - 1; i++) {
-                        for (int j = i + 1; j < linkedList.size(); j++) {
-                            int priceFirst = linkedList.get(i).getPrice();
-                            int priceSecond = linkedList.get(j).getPrice();
-
-                            if (priceFirst < priceSecond) {
-                                int valuePriceChange = priceFirst;
-                                linkedList.get(i).setPrice(priceSecond);
-                                linkedList.get(j).setPrice(valuePriceChange);
-                            }
-                        }
-                    }
-                    for (int i = 0; i < linkedList.size(); i++) {
-                        System.out.println(linkedList.get(i));
-                    }
+                    Collections.sort(linkedList, Collections.reverseOrder());
                     break;
+                default:
+                    System.out.println("Lựa chọn không hợp lệ");
+                    continue;
             }
-            System.out.println("Bạn muốn tiếp tục săp xếp.");
-            System.out.println("1.Có");
-            System.out.println("2.Không");
-            sellect = sc.nextByte();
 
-        } while (sellect < 2);
+            System.out.println("Danh sách giá sản phẩm sau khi sắp xếp:");
+            for (LinkedListProduct price : linkedList) {
+                System.out.println(price);
+            }
+
+            System.out.println("Bạn muốn tiếp tục sắp xếp?");
+            System.out.println("1. Có");
+            System.out.println("2. Không");
+            check = scanner.nextInt();
+
+        }while (check < 2);
     }
 }

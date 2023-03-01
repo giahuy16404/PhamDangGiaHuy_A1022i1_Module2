@@ -1,6 +1,6 @@
 package homework.ss12_java_collection_framework.linkedlist_product.model;
 
-public class LinkedListProduct {
+public class LinkedListProduct implements Comparable<LinkedListProduct>{
     private int idProduct;
     private String nameProduct;
     private int price;
@@ -44,5 +44,11 @@ public class LinkedListProduct {
                 "- Tên sản phẩm: " + nameProduct + "\n" +
                 "- Mã sản phẩm: " + idProduct + "\n" +
                 "- Giá sản phẩm: " + price + " Vnd";
+    }
+
+    @Override
+    public int compareTo(LinkedListProduct linkedListProduct) {
+        return Integer.compare(this.price,linkedListProduct.getPrice());
+
     }
 }
