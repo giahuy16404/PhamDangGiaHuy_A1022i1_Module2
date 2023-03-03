@@ -11,13 +11,14 @@ public class InsertionSort {
 
             while (j>=0 && arr[j]< key){
                 arr[j + 1] = arr[j];
-                System.out.println("nếu các số  sau số " + key + "bé hơn thì " );
-                System.out.println("arr["+j + "]"  + "=" +"arr["+(j + 1) +"]");
+                System.out.println("nếu các số  sau số " + key + " bé hơn thì " );
+                System.out.println("arr["+(j + 1) + "]"  + "=" +"arr["+ j +"]");
                  j--;
                 System.out.println("xét tiếp phần tử phía sau ");
             }
             arr[j + 1] = key;
-            System.out.println("đã thõa điê kiện thì gán arr["+ (j +1) + "]  = " + key);
+            System.out.println("Không sắp xếp thì gán arr["+ (j +1) + "]  = " + key);
+            System.out.println("---------");
         }
     }
 
