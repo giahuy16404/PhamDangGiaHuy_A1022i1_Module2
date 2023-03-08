@@ -20,7 +20,6 @@ public class Triangle {
             } else if (a + b < c || a + c < b || b + c < a) {
                 throw new IllegalTriangleException("nhập  tổng 2 cạnh không lớn hơn cạnh còn lại ");
             }
-
         } catch (InputMismatchException e) {
             System.out.println("Nhập số!");
         } catch (IllegalTriangleException e) {
