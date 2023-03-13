@@ -11,11 +11,8 @@ public class CoppyFileText {
         System.out.print("Enter target file path: ");
         String targetFile = reader.readLine();
 
-        File source = new File(sourceFile);
-        File target = new File(targetFile);
-
-        FileInputStream inputStream = new FileInputStream(source);
-        FileOutputStream outputStream = new FileOutputStream(target);
+        FileInputStream inputStream = new FileInputStream(sourceFile);
+        FileOutputStream outputStream = new FileOutputStream(targetFile);
 
         int length;
         byte[] buffer = new byte[1024];

@@ -38,7 +38,5 @@ public class ReadFile {
                 + " , name=" + list.get(2)
                 + "]");
     }
-
-    ;
 }
 
