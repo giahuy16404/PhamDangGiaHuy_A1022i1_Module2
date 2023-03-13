@@ -1,4 +1,4 @@
-package homework.ss17_io_binary_file_serialization.exercise.service;
+package homework.ss17_io_binary_file_serialization.exercise.repository;
 
 import homework.ss17_io_binary_file_serialization.exercise.model.Product;
 
@@ -6,8 +6,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductService implements Serializable {
-    static String path = "D:\\CODEGYM\\Module2\\Module2\\src\\homework\\ss17_io_binary_file_serialization\\exercise\\service\\fileProduct.dat";
+public class ProductRepository implements Serializable {
+    static String path = "D:\\CODEGYM\\Module2\\Module2\\src\\homework\\ss17_io_binary_file_serialization\\exercise\\repository\\fileProduct.dat";
 
     private void writeProduct(String path, List<Product> products) {
         try {
@@ -37,18 +37,18 @@ public class ProductService implements Serializable {
     }
 
 
-    public void addProductService(Product product) {
+    public void addProductRepository(Product product) {
         List<Product> products;
         products = readProduct(path);
         products.add(product);
         writeProduct(path, products);
     }
 
-    public void displayProductService() {
+    public void displayProductRepository() {
         System.out.println(readProduct(path));
     }
 
-    public void IdDisplayProductService(int id) {
+    public void IdDisplayProductRepository(int id) {
         List<Product> products = readProduct(path);
         for (Product product : products) {
             if (product.getIdProduct() == id) {
