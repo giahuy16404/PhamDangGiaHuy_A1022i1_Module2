@@ -1,10 +1,7 @@
 package homework.ss17_io_binary_file_serialization.exercise.controller;
-
 import homework.ss17_io_binary_file_serialization.exercise.model.Product;
-import homework.ss17_io_binary_file_serialization.exercise.repository.ProductRepository;
 import homework.ss17_io_binary_file_serialization.exercise.service.ProductService;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -47,8 +44,6 @@ public class ProductController implements Serializable {
                     case 4:
                         check = false;
                         break;
-
-
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Nhập đúng định dạng!");
