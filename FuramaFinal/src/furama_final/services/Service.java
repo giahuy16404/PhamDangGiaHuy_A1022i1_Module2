@@ -1,8 +1,10 @@
 package furama_final.services;
 
+import java.io.IOException;
+
 public interface Service {
-     void display();
-     void add(Object o);
-     void edit(String id);
+     void display() throws IOException;
+     void add(Object o) throws IOException;
+     void edit(String id) throws IOException;
 
 }

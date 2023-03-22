@@ -1,13 +1,15 @@
 package furama_final.views.home_view;
 
+import furama_final.views.booking_view.BookingView;
 import furama_final.views.customer_view.CustomerView;
 import furama_final.views.employee_view.EmployeeView;
 import furama_final.views.facility_view.FacilityView;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class HomeView {
-    public static void displayHomeMenu() {
+    public static void displayHomeMenu() throws IOException {
         Scanner sc = new Scanner(System.in);
         boolean check = true;
         while (check) {
@@ -29,7 +31,10 @@ public class HomeView {
                     FacilityView.show();
                     break;
                 case 4:
+                    BookingView.show();
+                    break;
                 case 5:
+                    break;
                 case 6:
                     check = false;
                     break;
@@ -38,7 +43,7 @@ public class HomeView {
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         displayHomeMenu();
     }
 }

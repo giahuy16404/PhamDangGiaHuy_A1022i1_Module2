@@ -10,10 +10,6 @@ public class Customer extends Person{
         super(code, name, dateOfBirth, gender, citizenIdentification, phoneNumber, email, address);
         this.typeOfGuest = typeOfGuest;
     }
-    public void setCustomer(String code, String name, LocalDate dateOfBirth, String gender,
-                            String citizenIdentification, String phoneNumber, String email, String address, String typeOfGuest) {
-        this.typeOfGuest = typeOfGuest;
-    }
 
 
     public Customer(String typeOfGuest) {
@@ -34,7 +30,7 @@ public class Customer extends Person{
     @Override
     public String toString() {
         return "Customer{" +
-                "typeOfGuest='" + typeOfGuest + '\'' +
+                "Mã khách hàng  = '" + getCode() + '\'' +
                 '}';
     }
 }

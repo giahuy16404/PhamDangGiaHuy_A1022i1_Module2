@@ -1,21 +1,71 @@
 package furama_final.views.facility_view;
 
 import furama_final.models.House;
+import furama_final.utility.MyRegex;
+import furama_final.utility.Utility;
 
 import java.util.Scanner;
+
 public class AddHouse {
     public static House add() {
         Scanner sc = new Scanner(System.in);
+        System.out.println("Nhập tên dịch vụ: ");
+        String name = sc.nextLine();
+        boolean checkName = name.matches(MyRegex.REGEX_NAMESERVICE);
+        while (!checkName) {
+            System.out.println("Bạn đã nhập sai định dạng!");
+            System.out.print("Mời nhập lại: ");
+            name = sc.nextLine();
+            checkName = name.matches(MyRegex.REGEX_NAMESERVICE);
+        }
 
-        String name = "Villa";
+        System.out.print("Nhập mã dịch vụ: ");
+        String idService = sc.nextLine();
+        boolean checkIdRegex = idService.matches(MyRegex.REGEX_IDHOUSE);
+        boolean checkId = Utility.checkFacility(idService);
 
-        int arena= 110;
+        while (!checkIdRegex || checkId) {
+            if(!checkIdRegex){
+                System.out.println("Bạn đã nhập sai định dạng!");
+                System.out.print("Mời nhập lại: ");
+            }
+            if (checkId) {
+                System.out.println("ID đã có trong danh sách!");
+                System.out.print("Mời bạn nhập lại: ");
+            }
+            idService = sc.nextLine();
+            checkIdRegex = idService.matches(MyRegex.REGEX_IDHOUSE);
+            checkId = Utility.checkFacility(idService);
+        }
 
-        double rentalCost = 130;
-
-        int numberPeople = 15;
-
-        int numberFloor = 6;
+        System.out.print("Nhập vào diện tích sử dụng: ");
+        int arena = Integer.parseInt(sc.nextLine());
+        while (arena > 0 && arena < 30.0) {
+            System.out.println("Diện tích phải lớn hơn 30m vuông!");
+            System.out.print("Mời bạn nhập lại: ");
+            arena = Integer.parseInt(sc.nextLine());
+        }
+        System.out.print("Mời bạn nhập vào chi phí thuê: ");
+        int rentalCost = Integer.parseInt(sc.nextLine());
+        while (rentalCost < 0) {
+            System.out.println("Chi phí thuê phải lớn hơn 0!");
+            System.out.println("Mời bạn nhập lại");
+            rentalCost = Integer.parseInt(sc.nextLine());
+        }
+        System.out.print("Nhập vào số lượng người sử dụng: ");
+        int numberPeople = Integer.parseInt(sc.nextLine());
+        while (numberPeople < 0 || numberPeople > 20) {
+            System.out.println("Số lượng người phải lớn hơn 0 và bé hơn 20!");
+            System.out.print("Mời bạn nhập lại: ");
+            numberPeople = Integer.parseInt(sc.nextLine());
+        }
+        System.out.print("Nhập vào số tầng: ");
+        int numberFloor = Integer.parseInt(sc.nextLine());
+        while (numberFloor < 0) {
+            System.out.println("số tầng phải lớn hơn 0!");
+            System.out.print("Mời bạn nhập lại: ");
+            numberFloor = Integer.parseInt(sc.nextLine());
+        }
 
         String rentalType = null;
         boolean check = true;
@@ -77,6 +127,8 @@ public class AddHouse {
                     break;
             }
         }
-        return new House(name,arena,rentalCost,numberPeople,rentalType,roomStandards,numberFloor);
+        return new
+
+                House(idService, name, arena, rentalCost, numberPeople, rentalType, roomStandards, numberFloor);
     }
 }

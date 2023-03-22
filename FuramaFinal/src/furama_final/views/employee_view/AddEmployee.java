@@ -28,7 +28,7 @@ public class AddEmployee {
 
             System.out.print("Nhập ngày tháng năm sinh dd/MM/yyyy: ");
             String birthDayEmployees = sc.nextLine();
-            LocalDate dateOfBirth = Utility.formatBirthDay(birthDayEmployees);
+            LocalDate dateOfBirth = Utility.formatDayMonthYear(birthDayEmployees);
 
             System.out.print("Nhập giới tính: ");
             String gender = sc.nextLine();
@@ -117,7 +117,7 @@ public class AddEmployee {
                 }
             }
             System.out.print("Nhập lương nhân viên: ");
-            double wage = Double.parseDouble(sc.nextLine());
+            String wage = sc.nextLine();
             System.out.println(" ---------------- ");
 
             employee = new Employee(code, name, dateOfBirth, gender, idCC, phoneNumber, address, email

@@ -2,10 +2,11 @@ package furama_final.views.employee_view;
 
 import furama_final.controllers.employee_controller.EmployeeController;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public  class EmployeeView {
-    public static void show(){
+    public static void show() throws IOException {
         EmployeeController employeeController = new EmployeeController();
 
         Scanner sc = new Scanner(System.in);

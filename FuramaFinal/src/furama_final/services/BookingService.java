@@ -5,9 +5,6 @@ import furama_final.models.Contract;
 public interface BookingService extends Service {
 
 
-    void createNewConstracts(Contract o);
-
-    void displayListContracts();
 
     @Override
     void display();

@@ -1,17 +1,19 @@
 package furama_final.models;
 
+import java.time.LocalDate;
+
 public class Booking {
     private String codeBooking;
-    private int starDay;
-    private int endDay;
+    private LocalDate checkIn;
+    private LocalDate checkOut;
     private String codeCustomer;
     private String serviceName;
     private String typeOfService;
 
-    public Booking(String codeBooking, int starDay, int endDay, String codeCustomer, String serviceName, String typeOfService) {
+    public Booking(String codeBooking, LocalDate starDay, LocalDate endDay, String codeCustomer, String serviceName, String typeOfService) {
         this.codeBooking = codeBooking;
-        this.starDay = starDay;
-        this.endDay = endDay;
+        this.checkIn = starDay;
+        this.checkOut = endDay;
         this.codeCustomer = codeCustomer;
         this.serviceName = serviceName;
         this.typeOfService = typeOfService;
@@ -29,20 +31,20 @@ public class Booking {
         this.codeBooking = codeBooking;
     }
 
-    public int getStarDay() {
-        return starDay;
+    public LocalDate getCheckIn() {
+        return checkIn;
     }
 
-    public void setStarDay(int  starDay) {
-        this.starDay = starDay;
+    public void setCheckIn(LocalDate checkIn) {
+        this.checkIn = checkIn;
     }
 
-    public int getEndDay() {
-        return endDay;
+    public LocalDate getCheckOut() {
+        return checkOut;
     }
 
-    public void setEndDay(int endDay) {
-        this.endDay = endDay;
+    public void setCheckOut(LocalDate checkOut) {
+        this.checkOut = checkOut;
     }
 
     public String getCodeCustomer() {
@@ -73,8 +75,8 @@ public class Booking {
     public String toString() {
         return "Booking{" +
                 "codeBooking=" + codeBooking +
-                ", starDay=" + starDay +
-                ", endDay=" + endDay +
+                ", starDay=" + checkIn +
+                ", endDay=" + checkOut +
                 ", codeCustomer=" + codeCustomer +
                 ", serviceName='" + serviceName + '\'' +
                 ", typeOfService='" + typeOfService + '\'' +

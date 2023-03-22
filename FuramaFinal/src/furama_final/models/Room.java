@@ -3,8 +3,8 @@ package furama_final.models;
 public class Room extends Facility{
     private String freeService;
 
-    public Room(String serviceName, int usableArea, double rentalCosts, int numberOfPeople, String rentalType, String freeService) {
-        super(serviceName, usableArea, rentalCosts, numberOfPeople, rentalType);
+    public Room(String idService,String serviceName, int usableArea, int rentalCosts, int numberOfPeople, String rentalType, String freeService) {
+        super(idService,serviceName, usableArea, rentalCosts, numberOfPeople, rentalType);
         this.freeService = freeService;
     }
 
@@ -24,7 +24,7 @@ public class Room extends Facility{
     @Override
     public String toString() {
         return "Room{" +
-                "freeService='" + freeService + '\'' +
+                "tên phòng ='" + getServiceName() + '\'' +
                 '}';
     }
 }

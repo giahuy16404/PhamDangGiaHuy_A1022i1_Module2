@@ -1,13 +1,15 @@
 package furama_final.models;
 
 public abstract class Facility {
+    private String idService;
     private String serviceName;
     private int usableArea;
-    private double rentalCosts;
+    private int rentalCosts;
     private int numberOfPeople;
     private String rentalType;
 
-    public Facility(String serviceName, int usableArea, double rentalCosts, int numberOfPeople, String rentalType) {
+    public Facility(String idService,String serviceName, int usableArea, int rentalCosts, int numberOfPeople, String rentalType) {
+        this.idService = idService;
         this.serviceName = serviceName;
         this.usableArea = usableArea;
         this.rentalCosts = rentalCosts;
@@ -22,11 +24,19 @@ public abstract class Facility {
         return serviceName;
     }
 
+    public String getIdService() {
+        return idService;
+    }
+
+    public void setIdService(String idService) {
+        this.idService = idService;
+    }
+
     public void setServiceName(String serviceName) {
         this.serviceName = serviceName;
     }
 
-    public int getUsableArea() {
+    public double getUsableArea() {
         return usableArea;
     }
 

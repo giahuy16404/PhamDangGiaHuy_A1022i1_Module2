@@ -12,20 +12,6 @@ public class CustomerServiceImpl implements CustomerService {
     Scanner sc = new Scanner(System.in);
     static LinkedList<Customer> linkedList = new LinkedList<>();
 
-    static {
-        LocalDate date1 = Utility.formatBirthDay("23/03/2004");
-        linkedList.add(new Customer("1", "Hồ Ngọc Oanh", date1, "Nữ", "1027321049",
-                "0978633041", "hongocoanh2303@gmail.com", "k52/7 Lâm Hoành", "Plantium"));
-
-        LocalDate date2 = Utility.formatBirthDay("08/03/1979");
-        linkedList.add(new Customer("2", "Võ Thị Siêu Nhân", date2, "!Nữ", "1027321049",
-                "0978644444", "anhemchat2303@gmail.com", "Sao Hỏa", "Plantium"));
-
-        LocalDate date3 = Utility.formatBirthDay("04/03/1099");
-        linkedList.add(new Customer("3", "Bá Ngọc Hoàng", date3, "Nam", "2222221049",
-                "091231241", "ongtocacloaiong@gmail.com", "Thiên Đình", "Plantium"));
-
-    }
 
     @Override
     public void display() {
@@ -34,7 +20,7 @@ public class CustomerServiceImpl implements CustomerService {
         }
     }
 
-    public static boolean checkId(String id) {
+    public static boolean checkIdCustomer(String id) {
         boolean check = false;
         for (Customer customer : linkedList) {
             if (customer.getCode().equals(id)) {
@@ -57,28 +43,31 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void edit(String id) {
-        boolean flagId = checkId(id);
+        boolean flagId = checkIdCustomer(id);
         if (!flagId) {
             System.out.println("không có mã khách hàng này!");
         }
         if (flagId) {
+            Customer newCustomer = setCustomer(id);
             try {
                 System.out.print("Nhập mã khách hàng mới: ");
                 String newId = sc.nextLine();
                 boolean checkId;
-                checkId = CustomerServiceImpl.checkId(newId);
+                checkId = CustomerServiceImpl.checkIdCustomer(newId);
                 while (checkId) {
 
                     System.out.println("Mã khách hàng bạn nhập đã bị trùng!");
                     System.out.print("Mời bạn nhập lại:");
                     newId = sc.nextLine();
-                    checkId = CustomerServiceImpl.checkId(newId);
+                    checkId = CustomerServiceImpl.checkIdCustomer(newId);
                 }
                 System.out.print("Nhập họ và tên mới: ");
                 String newName = sc.nextLine();
+                newCustomer.setName(newName);
                 System.out.print("Nhập ngày tháng năm sinh dd/MM/yyyy: ");
                 String birtday = sc.nextLine();
-                LocalDate dateOfBirth = Utility.formatBirthDay(birtday);
+                LocalDate dateOfBirth = Utility.formatDayMonthYear(birtday);
+                newCustomer.setDateOfBirth(dateOfBirth);
                 System.out.print("Nhập giới tính mới: ");
                 String newGender = sc.nextLine();
                 System.out.print("Nhập chứng minh nhân dân mới: ");
@@ -125,7 +114,6 @@ public class CustomerServiceImpl implements CustomerService {
                 }
                 System.out.print("Nhập địa chỉ mới: ");
                 String newLocation = sc.nextLine();
-                setCustomer(id).setCustomer(newId, newName, dateOfBirth, newGender, newCmnd, newPhone, newEmail, newLocation, newGuestType);
             } catch (NumberFormatException e) {
                 System.out.println("Đã nhập sai định dạng số. Vui lòng nhập lại.");
             } catch (Exception e) {
@@ -138,6 +126,4 @@ public class CustomerServiceImpl implements CustomerService {
     public void add(Object o) {
         linkedList.add((Customer) o);
     }
-
-
 }

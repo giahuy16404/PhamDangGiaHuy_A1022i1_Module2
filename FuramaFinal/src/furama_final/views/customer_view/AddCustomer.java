@@ -15,13 +15,13 @@ public class AddCustomer {
             System.out.print("Nhập mã khách hàng:");
             String id = sc.nextLine();
             boolean checkId;
-            checkId = CustomerServiceImpl.checkId(id);
+            checkId = CustomerServiceImpl.checkIdCustomer(id);
             while (checkId) {
 
                 System.out.println("Mã khách hàng  bạn nhập đã bị trùng!");
                 System.out.print("Mời bạn nhập lại:");
                 id = sc.nextLine();
-                checkId = CustomerServiceImpl.checkId(id);
+                checkId = CustomerServiceImpl.checkIdCustomer(id);
             }
 
             System.out.print("Nhập vào họ và tên: ");
@@ -30,7 +30,7 @@ public class AddCustomer {
             System.out.print("Nhập ngày tháng năm sinh dd/MM/yyyy: ");
             String birthday = sc.nextLine();
 
-            LocalDate dateOfBirth = Utility.formatBirthDay(birthday);
+            LocalDate dateOfBirth = Utility.formatDayMonthYear(birthday);
 
             System.out.print("Nhập vào giới tính: ");
             String gender = sc.nextLine();
