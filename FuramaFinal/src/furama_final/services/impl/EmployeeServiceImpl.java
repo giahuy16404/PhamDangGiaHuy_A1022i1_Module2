@@ -2,6 +2,7 @@ package furama_final.services.impl;
 
 import furama_final.models.Employee;
 import furama_final.services.EmployeeService;
+import furama_final.utility.MyRegex;
 import furama_final.utility.Utility;
 
 import java.io.*;
@@ -27,11 +28,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         bufferedWriter.close();
     }
+
     public void edit(Employee setEmployee, String id) throws IOException {
         List<Employee> list = readFile();
-        for (int i = 0; i <list.size() ; i++) {
-            if (list.get(i).getCode().equals(id)){
-                list.set(i,setEmployee);
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getCode().equals(id)) {
+                list.set(i, setEmployee);
                 break;
             }
         }
@@ -49,7 +51,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             temp = line.split(",");
             String id = temp[0];
             String name = temp[1];
-            LocalDate birtDay = LocalDate.parse(temp[2]);
+            String birtDay = temp[2];
             String gender = temp[3];
             String cCCD = temp[4];
             String phoneNumber = temp[5];
@@ -81,7 +83,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     public void display() throws IOException {
         List<Employee> list = readFile();
-
         for (Employee employee : list) {
             System.out.println(employee);
         }
@@ -102,12 +103,25 @@ public class EmployeeServiceImpl implements EmployeeService {
                 checkId = EmployeeServiceImpl.checkId(newId);
             }
 
-            System.out.print("Nhập tên nhân viên mới: ");
+            System.out.println("Nhập họ và tên nhân viên mới: ");
             String newName = sc.nextLine();
+            boolean checkName = newName.matches(MyRegex.REGEX_FIRSLASSNAME);
+            while (!checkName) {
+                System.out.println("Bạn đã nhập sai định dạng!");
+                System.out.print("Mời nhập lại: ");
+                newName = sc.nextLine();
+                checkName = newName.matches(MyRegex.REGEX_FIRSLASSNAME);
+            }
 
-            System.out.print("Nhập ngày tháng năm sinh mới dd/MM/yyyy: ");
-            String newBirthday = sc.nextLine();
-            LocalDate localDate = Utility.formatDayMonthYear(newBirthday);
+            System.out.print("Nhập ngày tháng năm sinh dd/MM/yyyy: ");
+            String birthDayEmployees = sc.nextLine();
+            boolean checkBirthday = Utility.birthDay(birthDayEmployees);
+            while (!checkBirthday) {
+                System.out.println("Hơn 18 tuổi và bé hơn 100!");
+                System.out.println("Mời nhập lại");
+                birthDayEmployees = sc.nextLine();
+                checkBirthday = Utility.birthDay(birthDayEmployees);
+            }
             System.out.print("Nhập ngày giới tính mới: ");
             String newGender = sc.nextLine();
             System.out.print("Nhập CCCD mới: ");
@@ -192,7 +206,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             }
             System.out.print("Nhập tiền lương mới: ");
             String newWage = sc.nextLine();
-            edit(new Employee(newId,newName,localDate,newGender,newCCCD,newSDT,newEmail,newAdress,newLever,newLocation,newWage),id);
+            edit(new Employee(newId, newName, birthDayEmployees, newGender, newCCCD, newSDT, newEmail, newAdress, newLever, newLocation, newWage), id);
 
         } catch (NumberFormatException e) {
             System.out.println("Đã nhập sai định dạng số. Vui lòng nhập lại.");

@@ -4,7 +4,6 @@ import furama_final.models.Customer;
 import furama_final.services.impl.CustomerServiceImpl;
 import furama_final.utility.Utility;
 
-import java.time.LocalDate;
 import java.util.Scanner;
 
 public class AddCustomer {
@@ -28,9 +27,14 @@ public class AddCustomer {
             String name = sc.nextLine();
 
             System.out.print("Nhập ngày tháng năm sinh dd/MM/yyyy: ");
-            String birthday = sc.nextLine();
-
-            LocalDate dateOfBirth = Utility.formatDayMonthYear(birthday);
+            String birthDayEmployees = sc.nextLine();
+            boolean checkBirthday = Utility.birthDay(birthDayEmployees);
+            while (!checkBirthday){
+                System.out.println("Hơn 18 tuổi và bé hơn 100!");
+                System.out.println("Mời nhập lại");
+                birthDayEmployees = sc.nextLine();
+                checkBirthday = Utility.birthDay(birthDayEmployees);
+            }
 
             System.out.print("Nhập vào giới tính: ");
             String gender = sc.nextLine();
@@ -81,7 +85,7 @@ public class AddCustomer {
 
             System.out.println(" ---------------- ");
 
-            customer = new Customer(id,name,dateOfBirth,gender,cmnd,numberPhone,email,location,guestType);
+            customer = new Customer(id,name,birthDayEmployees,gender,cmnd,numberPhone,email,location,guestType);
         } catch (NumberFormatException e) {
             System.out.println("Đã nhập sai định dạng số. Vui lòng nhập lại.");
         } catch (Exception e) {

@@ -5,14 +5,14 @@ import java.time.LocalDate;
 public abstract class Person {
     private String code;
     private String name;
-    private LocalDate dateOfBirth;
+    private String dateOfBirth;
     private String gender;
     private String CitizenIdentification;
     private String phoneNumber;
     private String email;
     private String address;
 
-    public Person(String code, String name, LocalDate dateOfBirth, String gender,
+    public Person(String code, String name, String dateOfBirth, String gender,
                   String citizenIdentification, String phoneNumber, String email, String address) {
         this.code = code;
         this.name = name;
@@ -41,11 +41,11 @@ public abstract class Person {
         this.name = name;
     }
 
-    public LocalDate getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

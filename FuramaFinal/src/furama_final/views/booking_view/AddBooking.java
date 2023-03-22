@@ -1,6 +1,5 @@
 package furama_final.views.booking_view;
 
-import furama_final.controllers.customer_controller.CustomerController;
 import furama_final.models.Booking;
 import furama_final.services.impl.CustomerServiceImpl;
 import furama_final.services.impl.EmployeeServiceImpl;
@@ -58,10 +57,10 @@ public class AddBooking {
 
                 System.out.print("Nhập ngày thuê phòng: ");
                 String  starVilla = sc.nextLine();
-                 LocalDate checkInVilla  =  Utility.formatDayMonthYear(starVilla);
+                LocalDate checkInVilla  = Utility.checkInOut(starVilla);
                 System.out.print("Nhập ngày trả phòng: ");
                 String endDayVilla =sc.nextLine();
-                LocalDate checkOutVilla  =  Utility.formatDayMonthYear(endDayVilla);
+                LocalDate checkOutVilla  = Utility.checkInOut(endDayVilla);
 
 
                 String typeOfServiceVilla = customerService.setCustomer(idCustomer).getTypeOfGuest();
@@ -87,10 +86,10 @@ public class AddBooking {
 
                 System.out.print("Nhập ngày thuê phòng: ");
                 String  starDayHouse = sc.nextLine();
-                LocalDate checkInHouse =  Utility.formatDayMonthYear(starDayHouse);
+                LocalDate checkInHouse = Utility.checkInOut(starDayHouse);
                 System.out.print("Nhập ngày trả phòng: ");
                 String endDayHouse=sc.nextLine();
-                LocalDate checkOutHouse  =  Utility.formatDayMonthYear(endDayHouse);
+                LocalDate checkOutHouse  = Utility.checkInOut(endDayHouse);
 
                 String nameServiceHouse = "House";
                 String typeOfServiceHouse = customerService.setCustomer(idCustomer).getTypeOfGuest();
@@ -117,10 +116,10 @@ public class AddBooking {
 
                 System.out.print("Nhập ngày thuê phòng: ");
                 String  starDayRoom = sc.nextLine();
-                LocalDate checkInRoom =  Utility.formatDayMonthYear(starDayRoom);
+                LocalDate checkInRoom = Utility.checkInOut(starDayRoom);
                 System.out.print("Nhập ngày trả phòng: ");
                 String endDayRoom =sc.nextLine();
-                LocalDate checkOutRoom  =  Utility.formatDayMonthYear(endDayRoom);
+                LocalDate checkOutRoom  = Utility.checkInOut(endDayRoom);
 
                 String nameServiceRoom = "Room";
                 String typeOfServiceRoom = customerService.setCustomer(idCustomer).getTypeOfGuest();

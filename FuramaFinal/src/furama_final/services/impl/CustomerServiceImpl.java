@@ -4,14 +4,53 @@ import furama_final.models.Customer;
 import furama_final.services.CustomerService;
 import furama_final.utility.Utility;
 
+import java.io.*;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class CustomerServiceImpl implements CustomerService {
     Scanner sc = new Scanner(System.in);
-    static LinkedList<Customer> linkedList = new LinkedList<>();
+    private static final String FILE_PATH = "D:\\CODEGYM\\Module2\\FuramaFinal\\src\\furama_final\\data\\customer.csv";
 
+    public static void writeFile(LinkedList<Customer> linkedList) throws IOException {
+        FileWriter fileWriter = new FileWriter(FILE_PATH);
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+        for (Customer customer : linkedList) {
+            bufferedWriter.write(customer.getCode() + "," + customer.getName() + "," +
+                    customer.getDateOfBirth() + "," + customer.getGender() + "," +
+                    customer.getCitizenIdentification() + "," + customer.getPhoneNumber() +
+                    "," + customer.getEmail() + "," + customer.getAddress() + "," + customer.getTypeOfGuest()+ "\n");
+        }
+        bufferedWriter.close();
+    }
+
+    public static LinkedList<Customer> readFile() throws IOException {
+        FileReader fileReader = new FileReader(FILE_PATH);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        LinkedList<Customer> list = new LinkedList<>();
+        String line;
+        Customer customer;
+        String[] temp;
+        while ((line = bufferedReader.readLine()) != null){
+            temp = line.split(",");
+            String id = temp[0];
+            String name = temp[1];
+            String birthday = temp[2];
+            String gender = temp[3];
+            String cCCD = temp[4];
+            String phoneNumber = temp[5];
+            String email = temp[6];
+            String address = temp[7];
+            String typeOf = temp[8];
+            customer = new Customer(id,name,birthday,gender,cCCD,phoneNumber,email,address,typeOf);
+            list.add(customer);
+        }
+        bufferedReader.close();
+        return list;
+    }
+
+    static LinkedList<Customer> linkedList = new LinkedList<>();
 
     @Override
     public void display() {
@@ -65,9 +104,15 @@ public class CustomerServiceImpl implements CustomerService {
                 String newName = sc.nextLine();
                 newCustomer.setName(newName);
                 System.out.print("Nhập ngày tháng năm sinh dd/MM/yyyy: ");
-                String birtday = sc.nextLine();
-                LocalDate dateOfBirth = Utility.formatDayMonthYear(birtday);
-                newCustomer.setDateOfBirth(dateOfBirth);
+                String birthDayEmployees = sc.nextLine();
+                boolean checkBirthday = Utility.birthDay(birthDayEmployees);
+                while (!checkBirthday) {
+                    System.out.println("Hơn 18 tuổi và bé hơn 100!");
+                    System.out.println("Mời nhập lại");
+                    birthDayEmployees = sc.nextLine();
+                    checkBirthday = Utility.birthDay(birthDayEmployees);
+                }
+                newCustomer.setDateOfBirth(birthDayEmployees);
                 System.out.print("Nhập giới tính mới: ");
                 String newGender = sc.nextLine();
                 System.out.print("Nhập chứng minh nhân dân mới: ");
@@ -123,7 +168,9 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void add(Object o) {
-        linkedList.add((Customer) o);
+    public void add(Object o) throws IOException {
+        LinkedList<Customer> list = readFile();
+        list.add((Customer) o);
+        writeFile(list);
     }
 }

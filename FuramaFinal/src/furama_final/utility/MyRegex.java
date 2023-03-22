@@ -5,5 +5,6 @@ public class MyRegex {
     public static final String REGEX_IDVILLA = "^^SVVL-\\d{4}$";
     public static final String REGEX_IDHOUSE= "^^SVHO-\\d{4}$";
     public static final String REGEX_IDROOM = "^^SVRO-\\d{4}$";
+    public static final String REGEX_FIRSLASSNAME= "^([A-Z][a-z]*)(\\s[A-Z][a-z]*)*$";
 
 }

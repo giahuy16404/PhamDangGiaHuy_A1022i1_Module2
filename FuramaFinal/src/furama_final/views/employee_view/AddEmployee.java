@@ -2,9 +2,9 @@ package furama_final.views.employee_view;
 
 import furama_final.models.Employee;
 import furama_final.services.impl.EmployeeServiceImpl;
+import furama_final.utility.MyRegex;
 import furama_final.utility.Utility;
 
-import java.time.LocalDate;
 import java.util.Scanner;
 
 public class AddEmployee {
@@ -23,12 +23,25 @@ public class AddEmployee {
                checkId = EmployeeServiceImpl.checkId(code);
            }
 
-            System.out.print("Nhập họ và tên: ");
+            System.out.println("Nhập họ và tên: ");
             String name = sc.nextLine();
+            boolean checkName = name.matches(MyRegex.REGEX_FIRSLASSNAME);
+            while (!checkName) {
+                System.out.println("Bạn đã nhập sai định dạng!");
+                System.out.print("Mời nhập lại: ");
+                name = sc.nextLine();
+                checkName = name.matches(MyRegex.REGEX_FIRSLASSNAME);
+            }
 
             System.out.print("Nhập ngày tháng năm sinh dd/MM/yyyy: ");
             String birthDayEmployees = sc.nextLine();
-            LocalDate dateOfBirth = Utility.formatDayMonthYear(birthDayEmployees);
+            boolean checkBirthday = Utility.birthDay(birthDayEmployees);
+            while (!checkBirthday){
+                System.out.println("Hơn 18 tuổi và bé hơn 100!");
+                System.out.println("Mời nhập lại");
+                birthDayEmployees = sc.nextLine();
+                checkBirthday = Utility.birthDay(birthDayEmployees);
+            }
 
             System.out.print("Nhập giới tính: ");
             String gender = sc.nextLine();
@@ -120,7 +133,7 @@ public class AddEmployee {
             String wage = sc.nextLine();
             System.out.println(" ---------------- ");
 
-            employee = new Employee(code, name, dateOfBirth, gender, idCC, phoneNumber, address, email
+            employee = new Employee(code, name, birthDayEmployees, gender, idCC, phoneNumber, address, email
                     , lever, location, wage);
 
         } catch (NumberFormatException e) {

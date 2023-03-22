@@ -7,7 +7,7 @@ public class Employee extends Person {
     private String location;
     private String Wage;
 
-    public Employee(String code, String name, LocalDate dateOfBirth, String gender, String citizenIdentification,
+    public Employee(String code, String name, String dateOfBirth, String gender, String citizenIdentification,
                     String phoneNumber, String email, String address, String level, String location, String wage) {
         super(code, name, dateOfBirth, gender, citizenIdentification, phoneNumber, email, address);
         this.level = level;

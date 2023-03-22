@@ -4,18 +4,38 @@ import furama_final.models.*;
 import furama_final.services.impl.FacilityServiceImpl;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.List;
 
 public class Utility {
 
-    public static LocalDate formatDayMonthYear(String birthDay) {
-
+    public static boolean birthDay(String birthDay) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate date = null;
+        try {
+            date = LocalDate.parse(birthDay, formatter);
+        }catch (DateTimeParseException e){
+            System.out.println("Sai định dạng ngày : dd/MM/yyyy  ");
+            e.printStackTrace();
+        }
+        Period period = Period.between(date,LocalDate.now());
 
-        return LocalDate.parse(birthDay, formatter);
+        return period.getYears() >= 18 && period.getYears() <= 100;
     }
+
+    public static LocalDate checkInOut(String birthDay) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate date = null;
+        try {
+            date = LocalDate.parse(birthDay, formatter);
+        }catch (DateTimeParseException e){
+            System.out.println("Sai định dạng ngày : dd/MM/yyyy  ");
+            e.printStackTrace();
+        }
+       return date;
+    }
+
 
     public static void displayListVilla() {
         for (Facility key : FacilityServiceImpl.linkedHashMap.keySet()) {

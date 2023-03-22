@@ -2,10 +2,11 @@ package furama_final.views.customer_view;
 
 import furama_final.controllers.customer_controller.CustomerController;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class CustomerView {
-    public static void show(){
+    public static void show() throws IOException {
         CustomerController customerController = new CustomerController();
         Scanner sc = new Scanner(System.in);
         int select;
