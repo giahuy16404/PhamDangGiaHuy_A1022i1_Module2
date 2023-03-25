@@ -19,7 +19,7 @@ public class Booking {
         this.typeOfService = typeOfService;
     }
 
-    public Booking(){
+    public Booking() {
 
     }
 
@@ -82,4 +82,6 @@ public class Booking {
                 ", typeOfService='" + typeOfService + '\'' +
                 '}';
     }
+
+
 }

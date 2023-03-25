@@ -12,7 +12,17 @@ import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeServiceImpl implements EmployeeService {
-    private static final String FILE_EMPLOYEE = "D:\\CODEGYM\\Module2\\FuramaFinal\\src\\furama_final\\data\\employee.csv";
+    private static final String FILE_EMPLOYEE = "D:\\CODEGYM\\Module2\\FuramaFinal\\src\\furama_final\\data\\person_data\\employee.csv";
+    private static final List<Employee> list;
+
+    static {
+        try {
+            list = readFile();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     Scanner sc = new Scanner(System.in);
 
 
@@ -30,7 +40,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     public void edit(Employee setEmployee, String id) throws IOException {
-        List<Employee> list = readFile();
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getCode().equals(id)) {
                 list.set(i, setEmployee);
@@ -69,9 +78,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
 
-    public static boolean checkId(String id) throws IOException {
+    public static boolean checkId(String id)  {
         boolean check = false;
-        List<Employee> list = readFile();
         for (Employee employee : list) {
             if (employee.getCode().equals(id)) {
                 check = true;
@@ -82,7 +90,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     public void display() throws IOException {
-        List<Employee> list = readFile();
         for (Employee employee : list) {
             System.out.println(employee);
         }
@@ -217,9 +224,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void add(Object o) throws IOException {
-        List<Employee> list = readFile();
-        list.add((Employee) o);
-        writeFile(list);
+        if(o != null){
+            list.add((Employee) o);
+            writeFile(list);
+        }
     }
-
 }

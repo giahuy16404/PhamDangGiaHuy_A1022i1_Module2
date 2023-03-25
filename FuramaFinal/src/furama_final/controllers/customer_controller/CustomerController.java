@@ -11,11 +11,11 @@ public class CustomerController {
         customerService.add(customer);
     }
 
-    public void display() {
+    public void display() throws IOException {
         customerService.display();
     }
 
-    public void edit(String id) {
+    public void edit(String id) throws IOException {
         customerService.edit(id);
     }
 }

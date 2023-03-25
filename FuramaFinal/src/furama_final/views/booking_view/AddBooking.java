@@ -3,10 +3,12 @@ package furama_final.views.booking_view;
 import furama_final.models.Booking;
 import furama_final.services.impl.CustomerServiceImpl;
 import furama_final.services.impl.EmployeeServiceImpl;
+import furama_final.services.impl.FacilityServiceImpl;
 import furama_final.utility.Utility;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class AddBooking {
@@ -29,21 +31,21 @@ public class AddBooking {
         }
 
         System.out.println("Nhập dịch vụ sử dụng");
-        System.out.println("1. Add New Villar");
+        System.out.println("1. Add New Villa");
         System.out.println("2. Add New House");
         System.out.println("3. Add New Room");
-        int sellectAddFacility = Integer.parseInt(sc.nextLine());
+        int selectAddFacility = Integer.parseInt(sc.nextLine());
 
 
-        switch (sellectAddFacility) {
+        switch (selectAddFacility) {
             case 1:
-                Utility.displayListVilla();
+                FacilityServiceImpl.displayListVilla();
                 System.out.println("-----------------");
                 System.out.println("Mời bạn chọn phòng");
                 System.out.print("Nhập mã phòng: ");
                 String addVilla = sc.nextLine();
                 boolean checkVilla = Utility.checkFacility(addVilla);
-                while (!checkVilla){
+                while (!checkVilla) {
                     System.out.println("Không có mã phòng bạn nhập!");
                     System.out.println("Mời nhập lại!");
                     addVilla = sc.nextLine();
@@ -56,26 +58,28 @@ public class AddBooking {
                 String nameServiceVilla = "Villa";
 
                 System.out.print("Nhập ngày thuê phòng: ");
-                String  starVilla = sc.nextLine();
-                LocalDate checkInVilla  = Utility.checkInOut(starVilla);
+                String starVilla = sc.nextLine();
+                LocalDate checkInVilla = Utility.checkInOut(starVilla);
+
+
                 System.out.print("Nhập ngày trả phòng: ");
-                String endDayVilla =sc.nextLine();
-                LocalDate checkOutVilla  = Utility.checkInOut(endDayVilla);
+                String endDayVilla = sc.nextLine();
+                LocalDate checkOutVilla = Utility.checkInOut(endDayVilla);
 
 
-                String typeOfServiceVilla = customerService.setCustomer(idCustomer).getTypeOfGuest();
+                String typeOfServiceVilla = customerService.returnCustomer(idCustomer).getTypeOfGuest();
+                booking = new Booking(idBookingVilla, checkInVilla, checkOutVilla, idCustomer, nameServiceVilla, typeOfServiceVilla);
+                FacilityServiceImpl.checkUseFacility(Utility.returnFacility(addVilla));
 
-                booking = new Booking(idBookingVilla,checkInVilla,checkOutVilla,idCustomer,nameServiceVilla,typeOfServiceVilla);
-                Utility.checkUseFacility(Utility.returnFacility(addVilla));
                 break;
             case 2:
-                Utility.displayListHouse();
+                FacilityServiceImpl.displayListHouse();
                 System.out.println("-----------------");
                 System.out.println("Mời bạn chọn phòng");
                 System.out.print("Nhập mã phòng: ");
                 String addHouse = sc.nextLine();
                 boolean checkHouse = Utility.checkFacility(addHouse);
-                while (!checkHouse){
+                while (!checkHouse) {
                     System.out.println("Không có mã phòng bạn nhập!");
                     System.out.println("Mời nhập lại!");
                     addHouse = sc.nextLine();
@@ -85,26 +89,26 @@ public class AddBooking {
                 String idBookingHouse = sc.nextLine();
 
                 System.out.print("Nhập ngày thuê phòng: ");
-                String  starDayHouse = sc.nextLine();
+                String starDayHouse = sc.nextLine();
                 LocalDate checkInHouse = Utility.checkInOut(starDayHouse);
                 System.out.print("Nhập ngày trả phòng: ");
-                String endDayHouse=sc.nextLine();
-                LocalDate checkOutHouse  = Utility.checkInOut(endDayHouse);
+                String endDayHouse = sc.nextLine();
+                LocalDate checkOutHouse = Utility.checkInOut(endDayHouse);
 
                 String nameServiceHouse = "House";
-                String typeOfServiceHouse = customerService.setCustomer(idCustomer).getTypeOfGuest();
+                String typeOfServiceHouse = customerService.returnCustomer(idCustomer).getTypeOfGuest();
+                booking = new Booking(idBookingHouse, checkInHouse, checkOutHouse, idCustomer, nameServiceHouse, typeOfServiceHouse);
+                FacilityServiceImpl.checkUseFacility(Utility.returnFacility(addHouse));
 
-                booking = new Booking(idBookingHouse,checkInHouse,checkOutHouse,idCustomer,nameServiceHouse,typeOfServiceHouse);
-                Utility.checkUseFacility(Utility.returnFacility(addHouse));
                 break;
             case 3:
-                Utility.displayListRoom();
+                FacilityServiceImpl.displayListRoom();
                 System.out.println("-----------------");
                 System.out.println("Mời bạn chọn phòng");
                 System.out.print("Nhập mã phòng: ");
                 String addRoom = sc.nextLine();
                 boolean checkRoom = Utility.checkFacility(addRoom);
-                while (!checkRoom){
+                while (!checkRoom) {
                     System.out.println("Không có mã phòng bạn nhập!");
                     System.out.println("Mời nhập lại!");
                     addRoom = sc.nextLine();
@@ -115,18 +119,17 @@ public class AddBooking {
 
 
                 System.out.print("Nhập ngày thuê phòng: ");
-                String  starDayRoom = sc.nextLine();
+                String starDayRoom = sc.nextLine();
                 LocalDate checkInRoom = Utility.checkInOut(starDayRoom);
                 System.out.print("Nhập ngày trả phòng: ");
-                String endDayRoom =sc.nextLine();
-                LocalDate checkOutRoom  = Utility.checkInOut(endDayRoom);
+                String endDayRoom = sc.nextLine();
+                LocalDate checkOutRoom = Utility.checkInOut(endDayRoom);
 
                 String nameServiceRoom = "Room";
-                String typeOfServiceRoom = customerService.setCustomer(idCustomer).getTypeOfGuest();
+                String typeOfServiceRoom = customerService.returnCustomer(idCustomer).getTypeOfGuest();
 
-                booking = new Booking(idBookingRoom,checkInRoom,checkOutRoom,idCustomer,nameServiceRoom,typeOfServiceRoom);
-                Utility.checkUseFacility(Utility.returnFacility(addRoom));
-
+                booking = new Booking(idBookingRoom, checkInRoom, checkOutRoom, idCustomer, nameServiceRoom, typeOfServiceRoom);
+                FacilityServiceImpl.checkUseFacility(Utility.returnFacility(addRoom));
                 break;
         }
         return booking;

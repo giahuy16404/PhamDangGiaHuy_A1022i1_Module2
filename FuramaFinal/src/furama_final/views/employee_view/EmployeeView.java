@@ -23,7 +23,7 @@ public  class EmployeeView {
                     employeeController.display();
                     break;
                 case 2:
-                   employeeController.add(AddEmployee.addEmployee());
+                    employeeController.add(AddEmployee.addEmployee());
                     break;
                 case 3:
                    employeeController.edit(EditEmployee.editEmployee());

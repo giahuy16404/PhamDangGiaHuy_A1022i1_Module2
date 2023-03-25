@@ -20,26 +20,28 @@ public class AddRoom {
             checkNameService = name.matches(MyRegex.REGEX_NAMESERVICE);
         }
         System.out.print("Nhập mã dịch vụ: ");
-        String id = sc.nextLine();
-        boolean checkIdRegex = name.matches(MyRegex.REGEX_IDROOM);
-        while (!checkIdRegex){
-            System.out.println("Bạn đã nhập sai định dạng!");
-            System.out.print("Mời nhập lại: ");
-            id = sc.nextLine();
-            checkIdRegex = name.matches(MyRegex.REGEX_IDROOM);
-        }
-        boolean checkId = Utility.checkFacility(id);
-        while (!checkId){
-            System.out.println("ID đã có trong danh sách!");
-            System.out.print("Mời bạn nhập lại: ");
-            id = sc.nextLine();
-            checkId = Utility.checkFacility(id);
+        String idService = sc.nextLine();
+        boolean checkIdRegex = idService.matches(MyRegex.REGEX_IDROOM);
+        boolean checkId = Utility.checkFacility(idService);
+
+        while (!checkIdRegex || checkId) {
+            if(!checkIdRegex){
+                System.out.println("Bạn đã nhập sai định dạng!");
+                System.out.print("Mời nhập lại: ");
+            }
+            if (checkId) {
+                System.out.println("ID đã có trong danh sách!");
+                System.out.print("Mời bạn nhập lại: ");
+            }
+            idService = sc.nextLine();
+            checkIdRegex = idService.matches(MyRegex.REGEX_IDROOM);
+            checkId = Utility.checkFacility(idService);
         }
 
 
         System.out.print("Nhập vào diện tích sử dụng: ");
         int  arena= Integer.parseInt(sc.nextLine());
-        while (arena >0 && arena < 30.0){
+        while ( arena < 30){
             System.out.println("Diện tích phải lớn hơn 30m vuông!");
             System.out.print("Mời bạn nhập lại: ");
             arena = Integer.parseInt(sc.nextLine());
@@ -107,6 +109,6 @@ public class AddRoom {
         System.out.print("Nhập vào dịch vụ miễn phí: ");
         String freeService = "Nước suối";
 
-        return new Room(id,name, arena, rentalCost, numberPeople, rentalType, freeService);
+        return new Room(idService,name, arena, rentalCost, numberPeople, rentalType, freeService);
     }
 }

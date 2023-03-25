@@ -5,13 +5,12 @@ import furama_final.services.CustomerService;
 import furama_final.utility.Utility;
 
 import java.io.*;
-import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class CustomerServiceImpl implements CustomerService {
     Scanner sc = new Scanner(System.in);
-    private static final String FILE_PATH = "D:\\CODEGYM\\Module2\\FuramaFinal\\src\\furama_final\\data\\customer.csv";
+    private static final String FILE_PATH = "D:\\CODEGYM\\Module2\\FuramaFinal\\src\\furama_final\\data\\person_data\\customer.csv";
 
     public static void writeFile(LinkedList<Customer> linkedList) throws IOException {
         FileWriter fileWriter = new FileWriter(FILE_PATH);
@@ -20,7 +19,7 @@ public class CustomerServiceImpl implements CustomerService {
             bufferedWriter.write(customer.getCode() + "," + customer.getName() + "," +
                     customer.getDateOfBirth() + "," + customer.getGender() + "," +
                     customer.getCitizenIdentification() + "," + customer.getPhoneNumber() +
-                    "," + customer.getEmail() + "," + customer.getAddress() + "," + customer.getTypeOfGuest()+ "\n");
+                    "," + customer.getEmail() + "," + customer.getAddress() + "," + customer.getTypeOfGuest() + "\n");
         }
         bufferedWriter.close();
     }
@@ -32,7 +31,7 @@ public class CustomerServiceImpl implements CustomerService {
         String line;
         Customer customer;
         String[] temp;
-        while ((line = bufferedReader.readLine()) != null){
+        while ((line = bufferedReader.readLine()) != null) {
             temp = line.split(",");
             String id = temp[0];
             String name = temp[1];
@@ -43,25 +42,26 @@ public class CustomerServiceImpl implements CustomerService {
             String email = temp[6];
             String address = temp[7];
             String typeOf = temp[8];
-            customer = new Customer(id,name,birthday,gender,cCCD,phoneNumber,email,address,typeOf);
+            customer = new Customer(id, name, birthday, gender, cCCD, phoneNumber, email, address, typeOf);
             list.add(customer);
         }
         bufferedReader.close();
         return list;
     }
 
-    static LinkedList<Customer> linkedList = new LinkedList<>();
 
     @Override
-    public void display() {
-        for (Customer customer : linkedList) {
+    public void display() throws IOException {
+        LinkedList<Customer> list = readFile();
+        for (Customer customer : list) {
             System.out.println(customer);
         }
     }
 
-    public static boolean checkIdCustomer(String id) {
+    public static boolean checkIdCustomer(String id) throws IOException {
+        LinkedList<Customer> list = readFile();
         boolean check = false;
-        for (Customer customer : linkedList) {
+        for (Customer customer : list) {
             if (customer.getCode().equals(id)) {
                 check = true;
                 break;
@@ -70,24 +70,38 @@ public class CustomerServiceImpl implements CustomerService {
         return check;
     }
 
-    public Customer setCustomer(String id) {
-        Customer setCustomer = null;
-        for (Customer customer : linkedList) {
-            if (customer.getCode().equals(id)) {
-                setCustomer = customer;
+    public void setCustomer(String id, Customer setCustomer) throws IOException {
+        LinkedList<Customer> list = readFile();
+
+        for (int i = 0; i <list.size() ; i++) {
+            if (list.get(i).getCode().equals(id)){
+                list.set(i,setCustomer);
+                break;
             }
         }
-        return setCustomer;
+        writeFile(list);
+    }
+
+    public Customer returnCustomer(String id) throws IOException {
+        LinkedList<Customer> list = readFile();
+        Customer returnCustomer = null;
+        for (Customer customer:list) {
+            if (customer.getCode().equals(id)){
+                returnCustomer = customer;
+                break;
+            }
+
+        }
+        return returnCustomer;
     }
 
     @Override
-    public void edit(String id) {
+    public void edit(String id) throws IOException {
         boolean flagId = checkIdCustomer(id);
         if (!flagId) {
             System.out.println("không có mã khách hàng này!");
         }
         if (flagId) {
-            Customer newCustomer = setCustomer(id);
             try {
                 System.out.print("Nhập mã khách hàng mới: ");
                 String newId = sc.nextLine();
@@ -102,17 +116,16 @@ public class CustomerServiceImpl implements CustomerService {
                 }
                 System.out.print("Nhập họ và tên mới: ");
                 String newName = sc.nextLine();
-                newCustomer.setName(newName);
+
                 System.out.print("Nhập ngày tháng năm sinh dd/MM/yyyy: ");
-                String birthDayEmployees = sc.nextLine();
-                boolean checkBirthday = Utility.birthDay(birthDayEmployees);
+                String newBirthday = sc.nextLine();
+                boolean checkBirthday = Utility.birthDay(newBirthday);
                 while (!checkBirthday) {
                     System.out.println("Hơn 18 tuổi và bé hơn 100!");
                     System.out.println("Mời nhập lại");
-                    birthDayEmployees = sc.nextLine();
-                    checkBirthday = Utility.birthDay(birthDayEmployees);
+                    newBirthday = sc.nextLine();
+                    checkBirthday = Utility.birthDay(newBirthday);
                 }
-                newCustomer.setDateOfBirth(birthDayEmployees);
                 System.out.print("Nhập giới tính mới: ");
                 String newGender = sc.nextLine();
                 System.out.print("Nhập chứng minh nhân dân mới: ");
@@ -159,6 +172,7 @@ public class CustomerServiceImpl implements CustomerService {
                 }
                 System.out.print("Nhập địa chỉ mới: ");
                 String newLocation = sc.nextLine();
+                setCustomer(id,new Customer(newId,newName,newBirthday,newGender,newCmnd,newPhone,newEmail,newLocation,newGuestType));
             } catch (NumberFormatException e) {
                 System.out.println("Đã nhập sai định dạng số. Vui lòng nhập lại.");
             } catch (Exception e) {
@@ -169,8 +183,11 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void add(Object o) throws IOException {
-        LinkedList<Customer> list = readFile();
-        list.add((Customer) o);
-        writeFile(list);
+        if (o != null){
+            LinkedList<Customer> list = readFile();
+            list.add((Customer) o);
+            writeFile(list);
+        }
+
     }
 }

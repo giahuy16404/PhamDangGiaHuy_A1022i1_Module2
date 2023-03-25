@@ -2,10 +2,11 @@ package furama_final.views.facility_view;
 
 import furama_final.controllers.facility_controller.FacilityController;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class FacilityView {
-    public static void show() {
+    public static void show() throws IOException {
         Scanner sc = new Scanner(System.in);
         FacilityController facilityController = new FacilityController();
         int select;

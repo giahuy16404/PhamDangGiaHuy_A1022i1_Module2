@@ -4,7 +4,8 @@ public class House extends Facility {
     private String styleStandard;
     private int numberOfFloors;
 
-    public House(String idService,String serviceName, int usableArea, int rentalCosts, int numberOfPeople, String rentalType, String styleStandard, int numberOfFloors) {
+    public House(String idService,String serviceName, int usableArea, int rentalCosts, int numberOfPeople,
+                 String rentalType, String styleStandard, int numberOfFloors) {
         super(idService,serviceName, usableArea, rentalCosts, numberOfPeople, rentalType);
         this.styleStandard = styleStandard;
         this.numberOfFloors = numberOfFloors;

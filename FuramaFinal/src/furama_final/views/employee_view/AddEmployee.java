@@ -14,14 +14,14 @@ public class AddEmployee {
         try {
             System.out.print("Nhập mã nhân viên:");
             String code = sc.nextLine();
-            boolean  checkId = EmployeeServiceImpl.checkId(code);
-           while (checkId) {
+            boolean checkId = EmployeeServiceImpl.checkId(code);
+            while (checkId) {
 
-               System.out.println("Mã nhân viên bạn nhập đã bị trùng!");
-               System.out.print("Mời bạn nhập lại:");
-               code = sc.nextLine();
-               checkId = EmployeeServiceImpl.checkId(code);
-           }
+                System.out.println("Mã nhân viên bạn nhập đã bị trùng!");
+                System.out.print("Mời bạn nhập lại:");
+                code = sc.nextLine();
+                checkId = EmployeeServiceImpl.checkId(code);
+            }
 
             System.out.println("Nhập họ và tên: ");
             String name = sc.nextLine();
@@ -34,9 +34,10 @@ public class AddEmployee {
             }
 
             System.out.print("Nhập ngày tháng năm sinh dd/MM/yyyy: ");
-            String birthDayEmployees = sc.nextLine();
+            String birthDayEmployees;
+            birthDayEmployees = sc.nextLine();
             boolean checkBirthday = Utility.birthDay(birthDayEmployees);
-            while (!checkBirthday){
+            while (!checkBirthday) {
                 System.out.println("Hơn 18 tuổi và bé hơn 100!");
                 System.out.println("Mời nhập lại");
                 birthDayEmployees = sc.nextLine();

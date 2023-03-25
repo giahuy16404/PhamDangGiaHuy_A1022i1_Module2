@@ -41,19 +41,31 @@ public class AddVilla {
 
 
         System.out.print("Nhập vào diện tích sử dụng: ");
-        int  arena= Integer.parseInt(sc.nextLine());
-        while (arena > 0 && arena < 30.0){
-            System.out.println("Diện tích phải lớn hơn 30m vuông!");
-            System.out.print("Mời bạn nhập lại: ");
-            arena = Integer.parseInt(sc.nextLine());
+        int  arena = 0;
+        try {
+         arena  = Integer.parseInt(sc.nextLine());
+            while (arena < 30){
+                System.out.println("Diện tích phải lớn hơn 30m vuông!");
+                System.out.print("Mời bạn nhập lại: ");
+                arena = Integer.parseInt(sc.nextLine());
+            }
+        }catch (NumberFormatException e){
+            e.printStackTrace();
         }
+
         System.out.print("Mời bạn nhập vào chi phí thuê: ");
-        int rentalCost = Integer.parseInt(sc.nextLine());
-        while (rentalCost < 0){
-            System.out.println("Chi phí thuê phải lớn hơn 0!");
-            System.out.println("Mời bạn nhập lại");
+        int rentalCost =0;
+        try {
             rentalCost = Integer.parseInt(sc.nextLine());
+            while (rentalCost < 0){
+                System.out.println("Chi phí thuê phải lớn hơn 0!");
+                System.out.println("Mời bạn nhập lại");
+                rentalCost = Integer.parseInt(sc.nextLine());
+            }
+        }catch (NumberFormatException e){
+            e.printStackTrace();
         }
+
         System.out.print("Nhập vào số lượng người sử dụng: ");
         int numberPeople = Integer.parseInt(sc.nextLine());
        while (numberPeople< 0 || numberPeople>20){

@@ -9,6 +9,11 @@ import java.util.Scanner;
 public class AddHouse {
     public static House add() {
         Scanner sc = new Scanner(System.in);
+        try {
+
+        }catch (NumberFormatException e){
+            e.printStackTrace();
+        }
         System.out.println("Nhập tên dịch vụ: ");
         String name = sc.nextLine();
         boolean checkName = name.matches(MyRegex.REGEX_NAMESERVICE);
@@ -40,7 +45,7 @@ public class AddHouse {
 
         System.out.print("Nhập vào diện tích sử dụng: ");
         int arena = Integer.parseInt(sc.nextLine());
-        while (arena > 0 && arena < 30.0) {
+        while ( arena < 30) {
             System.out.println("Diện tích phải lớn hơn 30m vuông!");
             System.out.print("Mời bạn nhập lại: ");
             arena = Integer.parseInt(sc.nextLine());
@@ -127,8 +132,6 @@ public class AddHouse {
                     break;
             }
         }
-        return new
-
-                House(idService, name, arena, rentalCost, numberPeople, rentalType, roomStandards, numberFloor);
+        return new House(idService, name, arena, rentalCost, numberPeople, rentalType, roomStandards, numberFloor);
     }
 }
