@@ -36,7 +36,6 @@ public class ProductRepository implements Serializable {
         return products;
     }
 
-
     public void addProductRepository(Product product) {
         List<Product> products;
         products = readProduct(path);

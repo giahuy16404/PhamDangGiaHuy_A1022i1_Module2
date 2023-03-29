@@ -130,7 +130,7 @@ public class ProductRepository implements IProductRepository {
                     Collections.sort(arrayList);
                     break;
                 case 2:
-                    Collections.sort(arrayList, Collections.reverseOrder());
+                    arrayList.sort(Collections.reverseOrder());
                     break;
                 default:
                     System.out.println("Lựa chọn không hợp lệ");

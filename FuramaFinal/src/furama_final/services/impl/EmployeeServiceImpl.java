@@ -26,6 +26,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     Scanner sc = new Scanner(System.in);
 
 
+
     public static void writeFile(List<Employee> list) throws IOException {
         FileWriter fileWriter = new FileWriter(FILE_EMPLOYEE);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
